@@ -4,7 +4,7 @@
 
         <div class="navbar nav_title" style="border: 0;">
             <?php $image_url = $this->config->item("upload_url"); ?>
-            <a href="<?php echo $this->config->item("site_url") . "dashboard"; ?>" class="site_title"> <span> <img src="<?php echo base_url() . "public/images/logo.png"; ?>" width="150" style="margin-left:25px;"></span></a>
+            <a href="<?php echo $this->config->item("site_url") . "dashboard"; ?>" class="site_title"> <span> <img src="<?php echo base_url() . "assets/images/logo.png"; ?>" width="150" style="margin-left:25px;"></span></a>
         </div>
         <div class="clearfix"></div>
         <br />  

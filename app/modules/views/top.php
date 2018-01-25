@@ -36,7 +36,7 @@ header("Pragma: no-cache");
 
         <title><?php echo isset($title) ? $title : MY_SITE_NAME; ?></title>
         <link rel="icon" href="<?php echo $this->config->item('images_url'); ?>favicon.png" type="image/x-icon" />
-        <?php include APPPATH . '/front-modules/views/common_files.php'; ?>    
+        <?php include APPPATH . '/modules/views/common_files.php'; ?>    
         <script>
             var js_url = '<?php echo $this->config->item("site_url") ?>';
             var cgst_value = '<?php echo $cgst; ?>';
@@ -60,7 +60,7 @@ header("Pragma: no-cache");
         <div id='loadingmessage'  class="loadingmessage"></div>
         <div class="container body">
             <div class="main_container">
-                <?php include APPPATH . '/front-modules/views/side.php'; ?>  
+                <?php include APPPATH . '/modules/views/side.php'; ?>  
                 <div class="top_nav">
                     <div class="nav_menu">
                         <nav class="" role="navigation">
@@ -87,5 +87,5 @@ header("Pragma: no-cache");
                         </nav>
                     </div>
                 </div>
-                <?php include APPPATH . '/front-modules/views/notification_message.php'; //footer file       ?>
+                <?php include APPPATH . '/modules/views/notification_message.php'; //footer file       ?>
                 <div class="right_col" role="main">

@@ -59,7 +59,7 @@
 
     </head>
     <body>
-        <?php include APPPATH . '/front-modules/views/notification_message.php'; //footer file     ?>
+        <?php include APPPATH . '/modules/views/notification_message.php'; //footer file     ?>
 
         <div class="">
             <a class="hiddenanchor" id="toregister"></a>
@@ -71,7 +71,7 @@
                     <section class="login_content" style="margin-top:4px;">
                         <div class= "logo">
                             <a href="javascript:void(0)" class=""> <span> 
-                                    <img src="<?php echo base_url() . "public/images/logo.png"; ?>" >
+                                    <img src="<?php echo base_url() . "assets/images/logo.png"; ?>" >
                                 </span>
                             </a>
                         </div>

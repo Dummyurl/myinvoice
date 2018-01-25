@@ -1,5 +1,5 @@
 <?php
-include APPPATH . '/front-modules/views/top.php';
+include APPPATH . '/modules/views/top.php';
 $page = isset($content_data[0]['page']) ? $content_data[0]['page'] : set_value('page');
 $code = isset($content_data[0]['code']) ? $content_data[0]['code'] : set_value('code');
 $content = isset($content_data[0]['content']) ? $content_data[0]['content'] : set_value('content');
@@ -42,4 +42,4 @@ $id = isset($content_data[0]['id']) ? $content_data[0]['id'] : $ids;
     </div>
 </div>
 <?php
-include APPPATH . '/front-modules/views/footer.php';
+include APPPATH . '/modules/views/footer.php';

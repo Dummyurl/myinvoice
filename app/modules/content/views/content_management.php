@@ -1,5 +1,5 @@
 <?php
-include APPPATH . '/front-modules/views/top.php';
+include APPPATH . '/modules/views/top.php';
 $cid = $this->input->get('cid');
 $name = $this->input->get('name');
 ?>
@@ -95,5 +95,5 @@ $name = $this->input->get('name');
     }
 </script>
 <?php
-include APPPATH . '/front-modules/views/footer.php';
+include APPPATH . '/modules/views/footer.php';
 ?>

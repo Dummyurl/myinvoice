@@ -1,6 +1,6 @@
 </div>
 </div>
-<?php include APPPATH . '/front-modules/views/footer.php'; //footer file  ?>
+<?php include APPPATH . '/modules/views/footer.php'; //footer file  ?>
 
 </div>
 </div>

@@ -1,4 +1,4 @@
-<?php include APPPATH . '/front-modules/views/top.php';
+<?php include APPPATH . '/modules/views/top.php';
 ?>
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -131,4 +131,4 @@
     });
 </script>
 <?php
-include APPPATH . '/front-modules/views/footer.php';
+include APPPATH . '/modules/views/footer.php';

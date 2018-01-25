@@ -1,5 +1,5 @@
 <?php
-include APPPATH . '/front-modules/views/top.php';
+include APPPATH . '/modules/views/top.php';
 ?>
 <div class="row">
     <div class="col-xs-12">
@@ -99,4 +99,4 @@ include APPPATH . '/front-modules/views/top.php';
     </div>
 </div>
 <script type="text/javascript" src="<?php echo $this->config->item('js_url'); ?>module/invoice.js"></script>
-<?php include APPPATH . '/front-modules/views/footer.php'; ?>
+<?php include APPPATH . '/modules/views/footer.php'; ?>

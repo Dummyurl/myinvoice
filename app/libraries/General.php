@@ -125,7 +125,7 @@ Class General {
                 fwrite($fp, $msg);
                 fclose($fp);
 
-                $f = fopen($site_path . 'public/upload/notification.html', 'a+');
+                $f = fopen($site_path . 'assets/upload/notification.html', 'a+');
                 fwrite($f, '<br/>' . date('Y-m-d H:i:s') . '<br/>');
                 fwrite($f, print_r($device_id, true) . '<br/>');
                 fwrite($f, print_r($body, true) . '<br/>');
@@ -182,7 +182,7 @@ Class General {
             $result = curl_exec($ch);
 
             //pr($result);exit;
-            $f = fopen($this->CI->config->item('site_path') . 'public/upload/android.html', 'a+');
+            $f = fopen($this->CI->config->item('site_path') . 'assets/upload/android.html', 'a+');
             fwrite($f, '<br/>' . date('Y-m-d H:i:s') . '<br/>');
             fwrite($f, print_r($registrationIDs, true) . '<br/>');
             fwrite($f, print_r($data, true));

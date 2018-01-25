@@ -86,33 +86,22 @@ defined('EXIT__AUTO_MIN') OR define('EXIT__AUTO_MIN', 9); // lowest automaticall
 defined('EXIT__AUTO_MAX') OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 
-define('admin_url', 'http://localhost/boulderweb');
-define('img_path', 'assets/images');
-define('css_path', 'assets/css');
-define('js_path', 'assets/js');
-define('uploads_path', 'assets/uploads');
+define('UPLOAD_PROVIDER_IMAGE_PATH', 'assets/upload/uploads_profile');
+define('NO_IMAGE_FILE', 'assets/upload/no-image.png');
+define('INVOICE_PDF', 'assets/invoice/');
+define('STATEMENT_PDF', 'assets/statement/');
 
-define('ADMIN_EMAIL', "nitinvirash@gmail.com");
-define('MY_SITE_NAME', "bouldervape");
-define('COMPANY_EMAIL', "info@bouldercigs.com");
-define('COMPANY_PHONE', "+1 123 456 7777");
+//Admin Email 
+define('ADMIN_EMAIL', "nitinboricha91@gmail.com");
+define('MY_SITE_NAME', "Invoice");
 
-//Email functinoality
-define('MAIL_HOST', 'a2plcpnl0556.prod.iad2.secureserver.net');
-define('MAIL_USERNAME', 'no-reply@bouldervape.com');
-define('MAIL_PASSWORD', '}K%nd~6HH7ou');
+
+
+define('MAIL_HOST', 'inr03.solidhosting.pro');
+define('MAIL_USERNAME', 'developer@meghinfotech.site');
+define('MAIL_PASSWORD', 'Tech@123');
 define('MAIL_PORT', '587');
-define('SMTPSecure', 'tsl');
-define('MAIL_FROM_EMAIL', 'no-reply@bouldervape.com');
-define('MAIL_FROM_NAME', MY_SITE_NAME);
+define('SMTPSecure', 'tls');
+define('MAIL_FROM_EMAIL', 'developer@meghinfotech.site');
+define('MAIL_FROM_NAME', 'Invoice');
 define('MAIL_SWITCH', TRUE);
-define('PER_PAGE', 10);
-
-define('UPLOAD_LOGO_PATH', '../NurseAdmin/assets/upload/');
-// No image path
-define('NO_IMAGE_PATH', 'assets/images/UserImage.png');
-define('NO_USER_PATH', 'assets/images/Oval-2@2x.png');
-
-define('BASE_WEB', 'http://itwebworks.in/');
-
-define ("MASTER_CATEGORY", serialize (array ("web"=>"web", "android" => "android", "ios" => "ios")));

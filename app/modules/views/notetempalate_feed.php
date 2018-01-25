@@ -3,7 +3,7 @@
                         <div class="commented-block">
                             <p><span class="tagline">posted a comment</span></p>
                             <div class="commented_statbox">
-                                <div class="porf_pic"> <img src="http://localhost/mehcrm/public/images/prof_person.png" alt=""> </div>
+                                <div class="porf_pic"> <img src="http://localhost/mehcrm/assets/images/prof_person.png" alt=""> </div>
                                 <div class="Comment_Right_block">
                                     <div class="Feed_content_title"> <a class="feed_owner" href="javascript:void(0)"></a><a href="javascript:void(0)" class="owner_comment"></a> </div>
                                     <span class="feed_date"></span>
@@ -38,7 +38,7 @@
                 <div id="templateScomment" class="hidden">
                     <div id="tmpscomm">
                         <li class="feed_last">
-                            <div class="porf_pic_inner"> <img src="http://localhost/mehcrm/public/images/prof_person.png" alt=""> </div>
+                            <div class="porf_pic_inner"> <img src="http://localhost/mehcrm/assets/images/prof_person.png" alt=""> </div>
                             <div class="Feed_content_title_main">
                                 <p><a class="feed_owner_new" href="javascript:void(0)"></a></p>
                                 <span class="feed_date_new"><small class="delete_link"><a href="javascript:void(0)">Delete</a></small></span> </div>

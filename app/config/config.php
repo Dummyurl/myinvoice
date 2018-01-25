@@ -455,7 +455,7 @@ $config['global_xss_filtering'] = FALSE;
   | 'csrf_regenerate' = Regenerate token on every submission
   | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
  */
-$config['csrf_protection'] = TRUE;
+$config['csrf_protection'] = FALSE;
 $config['csrf_token_name'] = 'token_id';
 $config['csrf_cookie_name'] = 'csrf_cookie_name';
 $config['csrf_expire'] = 7200;
@@ -544,7 +544,7 @@ $config['admin_images_url'] = $config['assets_url'] . 'admin/images/';
 $config['img_url'] = $config['assets_url'] . 'img/';
 $config['admin_img_url'] = $config['assets_url'] . 'admin/img/';
 
-$config['css_url'] = $config['assets_url'] . 'css/';
+$config['css_url'] = $config['assets_url'] . 'styles/';
 $config['admin_css_url'] = $config['assets_url'] . 'admin/css/';
 
 $config['js_url'] = $config['assets_url'] . 'js/';

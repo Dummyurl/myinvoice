@@ -3,8 +3,8 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-include APPPATH . 'third_party/PHPMailer/class.phpmailer.php';
-include APPPATH . "third_party/PHPMailer/class.smtp.php";
+//include APPPATH . 'third_party/Mail/class.phpmailer.php';
+//include APPPATH . "third_party/Mail/class.smtp.php";
 
 class Searchmail {
 
@@ -27,7 +27,7 @@ class Searchmail {
             $to_name = $toparam['to_name'];
         }
 
-        $logo_img = base_url() . "public/images/logo.png";
+        $logo_img = base_url() . "assets/images/logo.png";
         $image_url = $CI->config->item("upload_url");
 
         $html = '<table align="center" style="background-color:#ffffff;">';

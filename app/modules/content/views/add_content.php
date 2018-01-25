@@ -1,4 +1,4 @@
-<?php include APPPATH . '/front-modules/views/top.php'; ?>
+<?php include APPPATH . '/modules/views/top.php'; ?>
 <script type="text/javascript" src="<?php echo $this->config->item('js_url'); ?>ckeditor/ckeditor.js"></script>
 <script type="text/javascript" src="<?php echo $this->config->item('js_url'); ?>ckeditor/styles.js"></script>
 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -40,4 +40,4 @@
     </div>
 </div>
 <?php
-include APPPATH . '/front-modules/views/footer.php';
+include APPPATH . '/modules/views/footer.php';

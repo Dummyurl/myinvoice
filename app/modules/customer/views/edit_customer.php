@@ -1,5 +1,5 @@
 <?php
-include APPPATH . '/front-modules/views/top.php';
+include APPPATH . '/modules/views/top.php';
 
 
 $ID_Value = set_value('ID') ? set_value('ID') : $Customer['ID'];
@@ -78,4 +78,4 @@ $GSTno = set_value('GSTno') ? set_value('GSTno') : $Customer['GSTno'];
     </div>
 </div>
 <?php
-include APPPATH . '/front-modules/views/footer.php';
+include APPPATH . '/modules/views/footer.php';
