@@ -70,8 +70,18 @@
                 <div id="login" class="animate form col-xs-12">
                     <section class="login_content" style="margin-top:4px;">
                         <div class= "logo">
+                            <?php
+                            $img_name = get_logo();
+                            if ($img_name != '') {
+                                $img = 'images/' . $img_name;
+                                $img_path = $this->config->item('upload_url') . $img;
+                                $img_url = $this->config->item('upload_url') . $img;
+                            } else {
+                                $img_url = $this->config->item('upload_url') . 'no-image.png';
+                            }
+                            ?>
                             <a href="javascript:void(0)" class=""> <span> 
-                                    <img src="<?php echo base_url() . "assets/images/logo.png"; ?>" >
+                                    <img src="<?php echo $img_url; ?>" >
                                 </span>
                             </a>
                         </div>

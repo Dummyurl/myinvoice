@@ -3,8 +3,17 @@
     <div class="left_col scroll-view">
 
         <div class="navbar nav_title" style="border: 0;">
-            <?php $image_url = $this->config->item("upload_url"); ?>
-            <a href="<?php echo $this->config->item("site_url") . "dashboard"; ?>" class="site_title"> <span> <img src="<?php echo base_url() . "assets/images/logo.png"; ?>" width="150" style="margin-left:25px;"></span></a>
+            <?php
+            $img_name = get_logo();
+            if ($img_name != '') {
+                $img = 'images/' . $img_name;
+                $img_path = $this->config->item('upload_url') . $img;
+                $img_url = $this->config->item('upload_url') . $img;
+            } else {
+                $img_url = $this->config->item('upload_url') . 'no-image.png';
+            }
+            ?>
+            <a href="<?php echo $this->config->item("site_url") . "dashboard"; ?>" class="site_title"> <span> <img src="<?= $img_url ?>"style="margin-left:38px;width: 120px;height: 90px;"></span></a>
         </div>
         <div class="clearfix"></div>
         <br />  

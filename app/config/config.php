@@ -550,5 +550,5 @@ $config['admin_css_url'] = $config['assets_url'] . 'admin/css/';
 $config['js_url'] = $config['assets_url'] . 'js/';
 $config['admin_js_url'] = $config['assets_url'] . 'admin/js/';
 
-$config['upload_url'] = $config['assets_url'] . 'upload/profile_image/';
+$config['upload_url'] = $config['assets_url'] . 'upload/';
 $config['img_root_dir'] = dirname(dirname(BASEPATH)) . "/themeshub/assets/images/background/";

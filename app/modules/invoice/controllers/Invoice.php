@@ -63,8 +63,6 @@ class Invoice extends MX_Controller {
 
             //Product details
             $ProductName_arr = $this->input->post('ProductName');
-            $ProductHSN_arr = $this->input->post('ProductHSN');
-            $ProductSize_arr = $this->input->post('ProductSize');
             $ProductQty_arr = $this->input->post('ProductQty');
             $ProductRate_arr = $this->input->post('ProductRate');
 
@@ -83,8 +81,6 @@ class Invoice extends MX_Controller {
                         'Invoice_ID' => $id,
                         'ProductName' => $ProductName_arr[$key],
                         'ProductQty' => $ProductQty_arr[$key],
-                        'ProductSize' => $ProductSize_arr[$key],
-                        'ProductHSN' => $ProductHSN_arr[$key],
                         'ProductRate' => $ProductRate_arr[$key],
                         'ProductAmount' => $price,
                         'Gst' => $total_gst,
@@ -153,19 +149,19 @@ class Invoice extends MX_Controller {
         $pdf->Cell(10, 10, 'SrNo.', 1, 0, 'C');
 
         $pdf->SetXY(15, 90);
-        $pdf->Cell(50, 10, 'Product Name', 1, 0, 'C');
+        $pdf->Cell(70, 10, 'Product Name', 1, 0, 'C');
 
-        $pdf->SetXY(65, 90);
-        $pdf->Cell(20, 10, 'Size', 1, 0, 'C');
+//        $pdf->SetXY(65, 90);
+//        $pdf->Cell(20, 10, 'Size', 1, 0, 'C');
+//
+//        $pdf->SetXY(85, 90);
+//        $pdf->Cell(20, 10, 'HSN', 1, 0, 'C');
 
         $pdf->SetXY(85, 90);
-        $pdf->Cell(20, 10, 'HSN', 1, 0, 'C');
+        $pdf->Cell(20, 10, 'Qty', 1, 0, 'C');
 
         $pdf->SetXY(105, 90);
-        $pdf->Cell(10, 10, 'Qty', 1, 0, 'C');
-
-        $pdf->SetXY(115, 90);
-        $pdf->Cell(10, 10, 'Rate', 1, 0, 'C');
+        $pdf->Cell(20, 10, 'Rate', 1, 0, 'C');
 
         $pdf->SetXY(125, 90);
         $pdf->Cell(20, 10, 'Amount', 1, 0, 'C');
@@ -185,8 +181,6 @@ class Invoice extends MX_Controller {
         $yval = 10;
         //Product details
         $ProductName_arr = $this->input->post('ProductName');
-        $ProductSize_arr = $this->input->post('ProductSize');
-        $ProductHSN_arr = $this->input->post('ProductHSN');
         $ProductQty_arr = $this->input->post('ProductQty');
         $ProductRate_arr = $this->input->post('ProductRate');
 
@@ -207,23 +201,23 @@ class Invoice extends MX_Controller {
 
             $pdf->SetXY(15, 90 + $yval);
             $pdf->SetFontSize(7);
-            $pdf->Cell(50, 10, $ProductName_arr[$key], 1, 0, 'C');
+            $pdf->Cell(70, 10, $ProductName_arr[$key], 1, 0, 'C');
 
-            $pdf->SetXY(65, 90 + $yval);
-            $pdf->SetFontSize(7);
-            $pdf->Cell(20, 10, $ProductSize_arr[$key], 1, 0, 'C');
+//            $pdf->SetXY(65, 90 + $yval);
+//            $pdf->SetFontSize(7);
+//            $pdf->Cell(20, 10, $ProductSize_arr[$key], 1, 0, 'C');
+//
+//            $pdf->SetXY(85, 90 + $yval);
+//            $pdf->SetFontSize(7);
+//            $pdf->Cell(20, 10, $ProductHSN_arr[$key], 1, 0, 'C');
 
             $pdf->SetXY(85, 90 + $yval);
             $pdf->SetFontSize(7);
-            $pdf->Cell(20, 10, $ProductHSN_arr[$key], 1, 0, 'C');
+            $pdf->Cell(20, 10, $ProductQty_arr[$key], 1, 0, 'C');
 
             $pdf->SetXY(105, 90 + $yval);
             $pdf->SetFontSize(7);
-            $pdf->Cell(10, 10, $ProductQty_arr[$key], 1, 0, 'C');
-
-            $pdf->SetXY(115, 90 + $yval);
-            $pdf->SetFontSize(7);
-            $pdf->Cell(10, 10, number_format($ProductRate_arr[$key], 2), 1, 0, 'C');
+            $pdf->Cell(20, 10, number_format($ProductRate_arr[$key], 2), 1, 0, 'C');
 
             $pdf->SetXY(125, 90 + $yval);
             $pdf->SetFontSize(7);

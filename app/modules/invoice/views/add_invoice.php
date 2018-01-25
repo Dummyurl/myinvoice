@@ -86,8 +86,6 @@
                             <thead>
                                 <tr>
                                     <th style="width: 20%">Product Name</th>
-                                    <th style="width: 10%">Size</th>
-                                    <th style="width: 10%">HSN</th>
                                     <th style="width: 8%">Qty</th>
                                     <th style="width: 8%">Rate</th>
                                     <th style="width: 8%">Amount</th>
@@ -100,8 +98,6 @@
                             <tbody id="ProductTable">
                                 <tr id="mainproductblock1" class="mainproductblock tr_pro_1">
                                     <td><input required="" onblur="update_value(1)" tabindex="6" id="ProductName1" placeholder="Product Name" name="ProductName[]" class="form-control pro_name_1" type="text" value=""></td>
-                                    <td><input required="" onblur="update_value(1)" tabindex="7" id="ProductSize1" placeholder="Product Size" name="ProductSize[]" class="form-control pro_size_1" type="text" value=""></td>
-                                    <td><input required="" onblur="update_value(1)" tabindex="8" id="ProductHSN1" placeholder="HSN" name="ProductHSN[]" class="form-control pro_hsn_1" type="text" value=""></td>
                                     <td><input required="" onblur="update_value(1)" tabindex="9" id="ProductQty1" placeholder="Qty" name="ProductQty[]" class="form-control integer pro_qty_1" min="1" maxlength="10" type="number" value=""></td>
                                     <td><input required="" onblur="update_value(1)" tabindex="10" id="ProductRate1" placeholder="Rate" name="ProductRate[]" class="form-control integer pro_rate_1" type="number" value=""></td>
                                     <td><span class="pro_amt_1">0.00</span></td>

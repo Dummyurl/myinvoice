@@ -55,7 +55,17 @@ class Settings extends MX_Controller {
         $data['PinCode'] = trim($this->input->post('PinCode'));
         $data['GSTPercentage'] = trim($this->input->post('GSTPercentage'));
         $data['State'] = trim($this->input->post('State'));
+        
+        if (isset($_FILES['CompanyLogo']) && $_FILES['CompanyLogo']['name'] != '') {
+            $uploadPath = 'assets/upload/images';
+            $tmp_name = $_FILES["CompanyLogo"]["tmp_name"];
+            $temp = explode(".", $_FILES["CompanyLogo"]["name"]);
+            $newfilename = (uniqid()) . '.' . end($temp);
+            move_uploaded_file($tmp_name, "$uploadPath/$newfilename");
 
+            $data['CompanyLogo'] = $newfilename;
+        }
+        
         $where = "ID=1";
         $success = $this->model_settings->update('', $data, $where);
         $this->session->set_flashdata('success', "Setting has been updated successfully.");
