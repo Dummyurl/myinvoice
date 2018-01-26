@@ -21,16 +21,6 @@ class Root extends MX_Controller {
 
     public function login() {
         if (!$this->session->userdata('ID')) {
-            $cookiedata = $this->cookie->read('userarray');
-            $data['emailid'] = $cookiedata['user_emailid'];
-            $data['password'] = $cookiedata['user_password'];
-            $data['remember'] = '';
-
-            if (is_array($cookiedata) && $cookiedata['nspl_username'] != '') {
-                $data['emailid'] = $cookiedata['nspl_username'];
-                $data['password'] = $cookiedata['nspl_password'];
-                $data['remember'] = 'On';
-            }
             $this->load->view('login', $data);
         } else {
             redirect('dashboard');
@@ -74,21 +64,6 @@ class Root extends MX_Controller {
 
     public function login_action() {
         $postvar = $this->input->post();
-        $this->load->library('cookie');
-        ///print_r($postvar);exit;
-        if ($postarr['remember'] == 'on') {
-            $cookiedata = array(
-                'user_emailid' => $postarr['email'],
-                'user_password' => $postarr['password']
-            );
-            $this->cookie->write('userarray', $cookiedata);
-        } else {
-            $cookiedata = array(
-                'nspl_username' => '',
-                'nspl_password' => ''
-            );
-            $this->cookie->write('userarray', $cookiedata);
-        }
         $rply = $this->model_support->authenticate($postvar['email'], md5($postvar['password']));
         if ($rply['errorCode'] == 2) {
             $this->session->set_flashdata('failure', $rply['errorMessage']);
