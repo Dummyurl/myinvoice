@@ -52,7 +52,7 @@ include APPPATH . '/modules/views/top.php';
             <div class="col-md-3">
                 <div class="form-group">
                     <button type="submit" style="margin-top: 20px;" class="btn btn-success" id="search" name="search" value="Search">Generate Statement</button>
-                    <a style="margin-top: 20px;" href="<?php echo base_url(); ?>" class="btn btn-primary">Reset</a>
+                    <a style="margin-top: 20px;" href="<?php echo base_url("dashboard"); ?>" class="btn btn-primary">Reset</a>
                     <?php if (count($invoice_data) > 0 && $deault_Search == FALSE) { ?>
                         <a style="margin-top: 20px;" target="_blank" href="<?php echo base_url(STATEMENT_PDF) . '/' . $pdf_file_name; ?>" class="btn btn-danger">PDF</a>
                     <?php } ?>

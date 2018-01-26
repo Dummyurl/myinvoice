@@ -115,7 +115,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <input type="submit" value="Submit" class="btn btn-success">
-                                <a href="<?php echo base_url(); ?>" class="btn btn-primary">Cancel</a>
+                                <a href="<?php echo base_url("dashboard"); ?>" class="btn btn-primary">Cancel</a>
                             </div>
                         </div>
                     </div>
