@@ -69,10 +69,12 @@
 
                 <div id="login" class="animate form col-xs-12">
                     <section class="login_content" style="margin-top:4px;">
-                        <form id="login_form" action="<?php echo $this->config->item("site_url") . "root/register_action"; ?>" method="post" >
+                        <div>
+                            <h1 style="color: white">User Registration</h1>
+                        </div>
+                        <form id="register_form" action="<?php echo $this->config->item("site_url") . "root/register_action"; ?>" method="post" >
 
                             <div class="row">
-                                
                                 <div class="col-md-12">
                                     <p>User Name</p>
                                     <input type="text" placeholder="Username" class="form-control" name="Username" value="" id="Username" />

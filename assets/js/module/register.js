@@ -5,7 +5,8 @@ $(document).ready(function () {
         return this.optional(element) || /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,20}$/.test(value);
     }, "Please enter valid password.");
 
-    $("#login_form").validate({
+    $("#register_form").validate({
+        alert();
         rules: {
             Firstname: {
                 required: true,
