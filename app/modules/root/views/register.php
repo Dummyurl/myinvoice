@@ -65,7 +65,7 @@
             <a class="hiddenanchor" id="toregister"></a>
             <a class="hiddenanchor" id="tologin"></a>
 
-            <div id="wrapper">
+            <div id="wrapper" style="max-width:50%">
 
                 <div id="login" class="animate form col-xs-12">
                     <section class="login_content" style="margin-top:4px;">
@@ -81,10 +81,7 @@
                         <form id="register_form" action="<?php echo $this->config->item("site_url") . "root/register_action"; ?>" method="post" >
 
                             <div class="row">
-                                <div class="col-md-12">
-                                    <p>User Name</p>
-                                    <input type="text" placeholder="Username" class="form-control" name="Username" value="" id="Username" />
-                                </div>
+                                
                                 <div class="col-md-6">
                                     <p>First Name</p>
                                     <input type="text" placeholder="Firstname" class="form-control" name="Firstname" value="" id="Firstname" />
@@ -92,6 +89,10 @@
                                 <div class="col-md-6">
                                     <p>Last Name</p>
                                     <input type="text" placeholder="Lastname" class="form-control" name="Lastname" value="" id="Lastname" />
+                                </div>
+                                <div class="col-md-6">
+                                    <p>User Name</p>
+                                    <input type="text" placeholder="Username" class="form-control" name="Username" value="" id="Username" />
                                 </div>
                                 <div class="col-md-6">
                                     <p>Email</p>
@@ -107,8 +108,11 @@
                                     <input type="password" placeholder="Password" class="form-control" name="Password" value="" id="Password" />
                                 </div>
                                 <div class="col-md-6">
+                                    
+                                </div>
+                                <div class="col-md-6">
                                     <p>Confirm Password</p>
-                                    <input type="password" placeholder="Cpassword" class="form-control" name="Cpassword" value="" id="Cpassword" />
+                                    <input type="password" placeholder="Confirm password" class="form-control" name="Cpassword" value="" id="Cpassword" />
                                 </div>
 
                             </div>
