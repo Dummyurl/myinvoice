@@ -21,16 +21,27 @@ Class Model_support extends CI_Model {
         $result = $this->db->get();
         $record = $result->result_array();
         if (is_array($record) && count($record) > 0) {
-            $this->session->set_userdata("UserID", $record[0]["ID"]);
-            $this->session->set_userdata("USER_UNAME", $record[0]["Username"]);
-            $this->session->set_userdata("USER_FNAME", $record[0]["Firstname"]);
-            $this->session->set_userdata("USER_LNAME", $record[0]["Lastname"]);
-            $this->session->set_userdata("USER_EMAIL", $record[0]["Email"]);
-            $this->session->set_userdata("USER_IMAGE", $record[0]["ProfileImage"]);
+            $this->session->set_userdata("ID", $record[0]["ID"]);
+            $this->session->set_userdata("UNAME", $record[0]["Username"]);
+            $this->session->set_userdata("FNAME", $record[0]["Firstname"]);
+            $this->session->set_userdata("LNAME", $record[0]["Lastname"]);
+            $this->session->set_userdata("EMAIL", $record[0]["Email"]);
+            $this->session->set_userdata("IMAGE", $record[0]["ProfileImage"]);
             $this->errorCode = 1;
-            $data = array('UserID' => $record[0]["ID"], 'CreatedOn' => date("Y-m-d H:i:s"));
-            $this->db->insert('tbl_login_master', $data);
-            $insert_id = $this->db->insert_id();
+
+            $this->db->select('*');
+            $this->db->from('tbl_login_master');
+            $this->db->where('UserID', $record[0]["ID"]);
+            $result = $this->db->get();
+            $num = $result->num_rows();
+            if ($num > 0) {
+                $this->errorCode = 0;
+                $this->errorMessage = 'Are you already login another Browser please logout and try again.';
+            } else {
+                $data = array('UserID' => $record[0]["ID"], 'CreatedOn' => date("Y-m-d H:i:s"));
+                $this->db->insert('tbl_login_master', $data);
+                $insert_id = $this->db->insert_id();
+            }
         } else {
             $this->errorCode = 0;
             $this->errorMessage = 'Please check your Username or Password and try again.';

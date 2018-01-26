@@ -12,12 +12,12 @@ class Root extends MX_Controller {
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
     }
 
-    public function index() {
-        $this->load->view('home', $data);
+     public function index() {
+        redirect('dashboard');
     }
 
     public function login() {
-        if (!$this->session->userdata('UserID')) {
+        if (!$this->session->userdata('ID')) {
             $cookiedata = $this->cookie->read('userarray');
             $data['emailid'] = $cookiedata['user_emailid'];
             $data['password'] = $cookiedata['user_password'];
@@ -30,7 +30,7 @@ class Root extends MX_Controller {
             }
             $this->load->view('login', $data);
         } else {
-            redirect('home');
+            redirect('dashboard');
         }
     }
 
@@ -86,7 +86,6 @@ class Root extends MX_Controller {
             );
             $this->cookie->write('userarray', $cookiedata);
         }
-
         $rply = $this->model_support->authenticate($postvar['email'], md5($postvar['password']));
         if ($rply['errorCode'] == 1) {
             $this->session->set_flashdata('success', 'Welcome to ' . MY_SITE_NAME);
@@ -180,7 +179,7 @@ class Root extends MX_Controller {
     }
 
     public function logout() {
-        $user_id = $this->session->userdata('UserID');
+        $user_id = $this->session->userdata('ID');
         $deleted = $this->model_support->delete("tbl_login_master", "UserID=" . $user_id);
         $this->session->sess_destroy();
         $this->session->set_flashdata('success', 'logout successfully');
