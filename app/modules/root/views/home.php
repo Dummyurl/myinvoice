@@ -1,3 +1,6 @@
+<?php
+$UserID = (int) $this->session->userdata("ID");
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,13 +18,15 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="<?php echo base_url('home') ?>"><?php echo MY_SITE_NAME ?></a>
                 </div>
-                
+
                 <ul class="nav navbar-nav navbar-right">
+                    <?php if (!$UserID && $UserID == 0) { ?>
+                        <li>
+                            <a href="<?php echo base_url('register') ?>"><span class="glyphicon glyphicon-user"></span> Register</a>
+                        </li>
+                    <?php } ?>
                     <li>
-                        <a href="<?php echo base_url('register') ?>"><span class="glyphicon glyphicon-user"></span> Register</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo base_url('login') ?>"><span class="glyphicon glyphicon-log-in"></span> Login</a>
+                        <a href="<?php echo base_url('login') ?>"></span><?php echo isset($UserID) && $UserID > 0 ? "My Account" : "Login"; ?></a>
                     </li>
                 </ul>
             </div>

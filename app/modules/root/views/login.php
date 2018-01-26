@@ -70,18 +70,11 @@
                 <div id="login" class="animate form col-xs-12">
                     <section class="login_content" style="margin-top:4px;">
                         <div class= "logo">
-                            <?php
-                            $img_name = get_logo();
-                            if ($img_name != '') {
-                                $img = 'images/' . $img_name;
-                                $img_path = $this->config->item('upload_url') . $img;
-                                $img_url = $this->config->item('upload_url') . $img;
-                            } else {
-                                $img_url = $this->config->item('upload_url') . 'no-image.png';
-                            }
-                            ?>
-                            <a href="javascript:void(0)" class=""> <span> 
-                                    <img src="<?php echo $img_url; ?>" >
+                            <a href="<?php echo base_url(); ?>" class=""> 
+                                <span> 
+                                    <div>
+                                        <h1 style="color: white">User Login</h1>
+                                    </div>
                                 </span>
                             </a>
                         </div>
@@ -98,6 +91,7 @@
                             <div>
                                 <input type="submit" class="btn btn-default submit" value="SIGN IN" style="background-color:#689DFB;letter-spacing:2px;" />                                
                                 <a class="reset_pass" href="<?php echo $this->config->item("site_url") . "forgotpassword"; ?>" style="margin-top:15px;">Forgot Password</a>
+                                <a href="<?php echo $this->config->item("site_url") . "register"; ?>" style="margin-top:15px;margin-top: -90px !important;margin-right: 0px;float: left;">Create Account ?</a>
                             </div>
                             <div class="clearfix"></div>
 

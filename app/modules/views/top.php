@@ -1,6 +1,9 @@
 <?php
 //get Current admin details
-$admin_data = $this->model_support->getAdminDetail($this->session->userdata("ID"));
+$admin_data = get_user_details();
+//echo '<pre>';
+//print_r($admin_data);
+//exit;
 $gst_data = $this->model_support->getGstDetail();
 
 $cgst = 0;
@@ -13,9 +16,9 @@ if ($gst_data > 0) {
     $sgst = $gst_data[0]['GSTPercentage'] / 2;
 }
 
-$afirst_name = isset($admin_data[0]['Firstname']) ? $admin_data[0]['Firstname'] : "Admin";
-$alast_name = isset($admin_data[0]['Lastname']) ? $admin_data[0]['Lastname'] : "User";
-$aimage = isset($admin_data[0]['ProfileImage']) ? $admin_data[0]['ProfileImage'] : "no-image.png";
+$afirst_name = isset($admin_data['Firstname']) ? $admin_data['Firstname'] : "Admin";
+$alast_name = isset($admin_data['Lastname']) ? $admin_data['Lastname'] : "User";
+$aimage = isset($admin_data['ProfileImage']) ? $admin_data['ProfileImage'] : "no-image.png";
 
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 // always modified right now

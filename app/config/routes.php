@@ -7,16 +7,14 @@ $route['translate_uri_dashes'] = FALSE;
 
 // Root Controller
 $route['home'] = 'root/index';
-
 $route['register'] = 'root/register';
 $route['register_action'] = 'root/register_action';
-
 $route['login'] = 'root/login';
 $route['logout'] = 'root/logout';
 $route['forgotpassword'] = 'root/forgotpassword';
-
 $route['reset_password_user'] = 'root/reset_password_user';
-$route['dashboard'] = 'content/dashboard';
+$route['profile'] = 'root/profile';
+$route['profile_action'] = 'root/profile_action';
 /*
  *  Frontend Routes
  */
@@ -24,7 +22,7 @@ $route['dashboard'] = 'content/dashboard';
 //$route['login'] = 'content/login';
 //$route['logout'] = 'content/logout';
 //$route['reset_password'] = 'content/reset_password';
-$route['profile'] = 'content/profile';
+//$route['profile'] = 'content/profile';
 $route['dashboard'] = 'content/dashboard';
 //$route['forgotpassword'] = 'content/forgotpassword';
 //$route['reset_password_user'] = 'content/reset_password_user';

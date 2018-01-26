@@ -12,8 +12,9 @@ class Root extends MX_Controller {
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
     }
 
-     public function index() {
-        redirect('dashboard');
+    public function index() {
+        $data['title'] = "Home";
+        $this->load->view('home', $data);
     }
 
     public function login() {
@@ -89,7 +90,7 @@ class Root extends MX_Controller {
         $rply = $this->model_support->authenticate($postvar['email'], md5($postvar['password']));
         if ($rply['errorCode'] == 1) {
             $this->session->set_flashdata('success', 'Welcome to ' . MY_SITE_NAME);
-            redirect('home');
+            redirect('dashboard');
         } else {
             $this->session->set_flashdata('failure', $rply['errorMessage']);
             redirect('login');
@@ -183,7 +184,72 @@ class Root extends MX_Controller {
         $deleted = $this->model_support->delete("tbl_login_master", "UserID=" . $user_id);
         $this->session->sess_destroy();
         $this->session->set_flashdata('success', 'logout successfully');
-        redirect($this->config->item('site_url') . 'login');
+        redirect($this->config->item('site_url'));
+    }
+
+    public function profile() {
+        $res = $this->authenticate->check_login();
+        if (!$res) {
+            redirect('login');
+        }
+        $id = $this->session->userdata("ID");
+        $rply = $this->model_support->getData("tbl_users", "*", "ID=" . $id);
+        $data['all'] = $rply[0];
+        $this->load->view("profile", $data);
+    }
+
+    public function profile_action() {
+        $postvar = $this->input->post();
+        $id = $postvar['aid'];
+        $ImageFile = $_FILES['image'];
+        $val['Firstname'] = $postvar['firstname'];
+        $val['Lastname'] = $postvar['lastname'];
+        $val['Email'] = $postvar['email'];
+
+        if ($postvar['chnagepass'] == "1") {
+            $val['Password'] = md5($postvar['password']);
+        }
+
+        $this->model_support->update("tbl_users", $val, "ID=" . $id);
+
+        if ($ImageFile['name'] != '') {
+            $redirectUrl = 'profile';
+            if ($id != '') {
+                $redirectUrl .= '?id=' . urlencode($this->general->encryptData($id));
+            }
+
+            $this->load->library('upload');
+
+            $temp_folder_path = 'assets/upload/admin/';
+
+            $file_name = $ImageFile['name'];
+
+            $upload_config = array(
+                'upload_path' => $temp_folder_path,
+                'allowed_types' => "jpg|jpeg|gif|png", //*
+                'max_size' => 1028 * 1028 * 2,
+                'file_name' => $file_name,
+                'remove_space' => TRUE,
+                'overwrite' => True
+            );
+
+            $this->upload->initialize($upload_config);
+
+            if ($this->upload->do_upload('image')) {
+                $file_info = $this->upload->data();
+                $uploadedFile = $file_info['file_name'];
+                $postimg['ProfileImage'] = $uploadedFile;
+
+                $ext_cond = 'ID ="' . $id . '"';
+                $this->model_support->update("tbl_users", $postimg, $ext_cond);
+            } else {
+                echo $this->upload->display_errors();
+                exit;
+            }
+        }
+
+        $this->session->set_flashdata('success', 'profile updated successfully');
+        redirect("profile");
     }
 
 }

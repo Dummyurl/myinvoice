@@ -57,8 +57,8 @@ class Settings extends MX_Controller {
         $data['PinCode'] = trim($this->input->post('PinCode'));
         $data['GSTPercentage'] = trim($this->input->post('GSTPercentage'));
         $data['State'] = trim($this->input->post('State'));
-        $data['CurrencySymbol'] = trim($this->input->post('CurrencySymbol'));
-        $this->session->set_userdata("CurrSymbol", trim($this->input->post('CurrencySymbol')));
+        $data['CurrencySymbol'] = $this->input->post('CurrencySymbol');
+        $this->session->set_userdata("CurrSymbol", $this->input->post('CurrencySymbol'));
 
         if (isset($_FILES['CompanyLogo']) && $_FILES['CompanyLogo']['name'] != '') {
             $uploadPath = 'assets/upload/images';
@@ -69,10 +69,17 @@ class Settings extends MX_Controller {
 
             $data['CompanyLogo'] = $newfilename;
         }
-
-        $where = "ID=$this->UserID";
-        $success = $this->model_settings->update('', $data, $where);
-        $this->session->set_flashdata('success', "Setting has been updated successfully.");
+        $get_result = $this->model_settings->getData("", "*", "UserID=$this->UserID");
+        if (count($get_result) > 0) {
+            $where = "UserID=$this->UserID";
+            $success = $this->model_settings->update('', $data, $where);
+            $action= "updated";
+        } else {
+            $data['UserID'] = $this->UserID;
+            $id = $this->model_settings->insert('', $data);
+            $action= "inserted";
+        }
+        $this->session->set_flashdata('success', "Setting has been $action successfully.");
         redirect("settings");
     }
 

@@ -98,15 +98,16 @@
                         <div class="col-md-4 col-sm-6 col-xs-12">
                             <div class="form-group">
                                 <label for="CurrencySymbol">Currency Symbol<span class="required">*</span></label>
+                                <?php $currency = ($all['CurrencySymbol'] != '') ? $all['CurrencySymbol'] : ''; ?>"
                                 <select name="CurrencySymbol" id="CurrencySymbol" class="form-control" required="">
                                     <option value="">Select Currency Symbol</option>
-                                    <option value="₵">Cedi ( ₵ )</option>
-                                    <option value="$">Dollar ( $ )</option>
-                                    <option value="€">Euro ( € )</option>
-                                    <option value="ƒ">Florin ( ƒ )</option>
-                                    <option value="£">Pound ( £ )</option>
-                                    <option value="₹">Rupee ( ₹ )</option>
-                                    <option value="¥">Yuan ( ¥ )</option>
+                                    <option value="₵" <?php echo isset($currency) && $currency == "₵" ? "selected" : ""; ?>>Cedi ( ₵ )</option>
+                                    <option value="$" <?php echo isset($currency) && $currency == "$" ? "selected" : ""; ?>>Dollar ( $ )</option>
+                                    <option value="€" <?php echo isset($currency) && $currency == "€" ? "selected" : ""; ?>>Euro ( € )</option>
+                                    <option value="ƒ" <?php echo isset($currency) && $currency == "ƒ" ? "selected" : ""; ?>>Florin ( ƒ )</option>
+                                    <option value="£" <?php echo isset($currency) && $currency == "£" ? "selected" : ""; ?>>Pound ( £ )</option>
+                                    <option value="₹" <?php echo isset($currency) && $currency == "₹" ? "selected" : ""; ?>>Rupee ( ₹ )</option>
+                                    <option value="¥" <?php echo isset($currency) && $currency == "¥" ? "selected" : ""; ?>>Yuan ( ¥ )</option>
                                 </select>
                             </div>
                         </div>

@@ -69,8 +69,14 @@
 
                 <div id="login" class="animate form col-xs-12">
                     <section class="login_content" style="margin-top:4px;">
-                        <div>
-                            <h1 style="color: white">User Registration </h1>
+                        <div class= "logo">
+                            <a href="<?php echo base_url(); ?>" class=""> 
+                                <span> 
+                                    <div>
+                                        <h1 style="color: white">User Registration</h1>
+                                    </div>
+                                </span>
+                            </a>
                         </div>
                         <form id="register_form" action="<?php echo $this->config->item("site_url") . "root/register_action"; ?>" method="post" >
 
@@ -104,11 +110,12 @@
                                     <p>Confirm Password</p>
                                     <input type="password" placeholder="Cpassword" class="form-control" name="Cpassword" value="" id="Cpassword" />
                                 </div>
-                                
+
                             </div>
 
                             <div>
                                 <input type="submit" class="btn btn-default submit" value="SIGN IN" style="background-color:#689DFB;letter-spacing:2px;" />                                
+                                <a class="reset_pass" href="<?php echo $this->config->item("site_url") . "login"; ?>" style="margin-top:15px;margin-top: 4px !important;">Login ?</a>
                             </div>
                             <div class="clearfix"></div>
 
