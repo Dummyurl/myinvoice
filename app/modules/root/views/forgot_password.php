@@ -5,10 +5,9 @@
         <!-- Meta, title, CSS, favicons, etc. -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="icon" href="<?php echo $this->config->item('images_url'); ?>favicon.png" type="image/x-icon" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title><?php echo MY_SITE_NAME; ?></title>
+        <link rel="icon" href="<?php echo $this->config->item('images_url'); ?>favicon.png" type="image/x-icon" />
+        <title>NUE WELLNESS - Forgot Password </title>
 
         <!-- Bootstrap core CSS -->
         <link rel="stylesheet" href="<?php echo $this->config->item('css_url'); ?>bootstrap.min.css"/>
@@ -33,7 +32,7 @@
             }
             p
             {
-                float: left;font-size: 12px;color: #FFFFFF;line-height:10px;letter-spacing:1.5px;
+                float: left;font-size: 10px;color: #FFFFFF;line-height:10px;letter-spacing:1.5px;
             }
 
             html{
@@ -64,40 +63,21 @@
         <div class="">
             <a class="hiddenanchor" id="toregister"></a>
             <a class="hiddenanchor" id="tologin"></a>
-
             <div id="wrapper">
-
                 <div id="login" class="animate form col-xs-12">
                     <section class="login_content" style="margin-top:4px;">
                         <div class= "logo">
-                            <?php
-                            $img_name = get_logo();
-                            if ($img_name != '') {
-                                $img = 'images/' . $img_name;
-                                $img_path = $this->config->item('upload_url') . $img;
-                                $img_url = $this->config->item('upload_url') . $img;
-                            } else {
-                                $img_url = $this->config->item('upload_url') . 'no-image.png';
-                            }
-                            ?>
-                            <a href="javascript:void(0)" class=""> <span> 
-                                    <img src="<?php echo $img_url; ?>" >
-                                </span>
-                            </a>
+                            <a href="javascript:void(0)" class=""> <span> <img src="<?php echo base_url() . "assets/images/logo.png"; ?>"></span></a>
                         </div>
-                        <form id="login_form" action="<?php echo $this->config->item("site_url") . "root/login_action"; ?>" method="post" >
+                        <form id="login_form" action="<?php echo $this->config->item("site_url") . "root/forgotpassword_action"; ?>" method="post" >
                             <div>
-                                <p>USERNAME</p>
-                                <input type="text" placeholder="Username" class="form-control" name="email" value="admin" id="email" style="margin-top:-10px;" />
+                                <p>Email</p>
+                                <input type="text" placeholder="Email" class="form-control" name="email" id="email" style="margin-top:-10px;" />
                             </div>
 
                             <div>
-                                <p>PASSWORD</p>      
-                                <input type="password" placeholder="Password" class="form-control" value="admin" name="password" id="password" />
-                            </div>
-                            <div>
-                                <input type="submit" class="btn btn-default submit" value="SIGN IN" style="background-color:#689DFB;letter-spacing:2px;" />                                
-                                <a class="reset_pass" href="<?php echo $this->config->item("site_url") . "forgotpassword"; ?>" style="margin-top:15px;">Forgot Password</a>
+                                <input type="submit" class="btn btn-default submit" value="FORGOT PASSWORD" style="background-color:#689DFB;letter-spacing:2px;" />                                
+                                <a class="reset_pass" href="<?php echo $this->config->item("site_url") . "login"; ?>" style="margin-top:15px;">Login</a>
                             </div>
                             <div class="clearfix"></div>
 
@@ -109,7 +89,7 @@
 
             </div>
         </div>
-        <div class="footer">Copyright @ <?php echo date('Y') . "  " . MY_SITE_NAME; ?></div>
+        <div class="footer">Copyright @ <?php echo date('Y'); ?> NUE Wellness.</div>
         <script type="text/javascript" src="<?php echo $this->config->item('js_url'); ?>custom/login.js"></script>
     </body>
 </html>
