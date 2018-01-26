@@ -1,9 +1,19 @@
 <?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
-$route['default_controller'] = "content";
+$route['default_controller'] = "root";
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+ 
+// Root Controller
+$route['home'] = 'root/index';
+$route['login'] = 'root/login';
+$route['register'] = 'root/register';
+
+$route['login_action'] = 'root/login_action';
+$route['register_action'] = 'root/register_action';
+
+
 
 /*
  *  Frontend Routes

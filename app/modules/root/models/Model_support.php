@@ -10,7 +10,6 @@ Class Model_support extends CI_Model {
     public function __construct() {
         parent::__construct();
         $this->main_table = "tbl_admin_users";
-        $this->user_table = "tbl_users";
         $this->primary_key = "ID";
     }
 
@@ -43,15 +42,6 @@ Class Model_support extends CI_Model {
     function insert($tbl = '', $data = array()) {
         if ($tbl == '') {
             $tbl = $this->main_table;
-        }
-
-        $this->db->insert($tbl, $data);
-        $insert_id = $this->db->insert_id();
-        return $insert_id;
-    }
-    function Userinsert($tbl = '', $data = array()) {
-        if ($tbl == '') {
-            $tbl = $this->user_table;
         }
 
         $this->db->insert($tbl, $data);
