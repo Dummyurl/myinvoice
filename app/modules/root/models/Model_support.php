@@ -9,25 +9,28 @@ Class Model_support extends CI_Model {
 
     public function __construct() {
         parent::__construct();
-        $this->main_table = "tbl_admin_users";
+        $this->main_table = "tbl_users";
         $this->primary_key = "ID";
     }
 
     public function authenticate($username, $password) {
-        $ext = 'Password = "' . $password . '" AND  Username = "' . $username . '"';
         $this->db->select('*');
         $this->db->from($this->main_table);
-        $this->db->where($ext);
+        $this->db->where('Password', $password);
+        $this->db->where('(Email = "' . $username . '" OR  Username="' . $username . '")', false, false);
         $result = $this->db->get();
         $record = $result->result_array();
         if (is_array($record) && count($record) > 0) {
-            $this->session->set_userdata("ID", $record[0]["ID"]);
-            $this->session->set_userdata("UNAME", $record[0]["Username"]);
-            $this->session->set_userdata("FNAME", $record[0]["Firstname"]);
-            $this->session->set_userdata("LNAME", $record[0]["Lastname"]);
-            $this->session->set_userdata("EMAIL", $record[0]["Email"]);
-            $this->session->set_userdata("IMAGE", $record[0]["ProfileImage"]);
+            $this->session->set_userdata("UserID", $record[0]["ID"]);
+            $this->session->set_userdata("USER_UNAME", $record[0]["Username"]);
+            $this->session->set_userdata("USER_FNAME", $record[0]["Firstname"]);
+            $this->session->set_userdata("USER_LNAME", $record[0]["Lastname"]);
+            $this->session->set_userdata("USER_EMAIL", $record[0]["Email"]);
+            $this->session->set_userdata("USER_IMAGE", $record[0]["ProfileImage"]);
             $this->errorCode = 1;
+            $data = array('UserID' => $record[0]["ID"], 'CreatedOn' => date("Y-m-d H:i:s"));
+            $this->db->insert('tbl_login_master', $data);
+            $insert_id = $this->db->insert_id();
         } else {
             $this->errorCode = 0;
             $this->errorMessage = 'Please check your Username or Password and try again.';
@@ -1467,7 +1470,7 @@ Class Model_support extends CI_Model {
 
     function getUserData() {
         $this->db->select('*', FALSE);
-        $this->db->from("tbl_end_user");
+        $this->db->from("tbl_user");
         $list_data = $this->db->get()->result_array();
         return $list_data;
     }
@@ -1480,14 +1483,14 @@ Class Model_support extends CI_Model {
     }
 
     function check_username($username) {
-        $this->db->where('USername', $username);
-        $this->db->from("tbl_admin_users");
+        $this->db->where('Email', $username);
+        $this->db->from("tbl_users");
         $list_data = $this->db->get()->row_array();
         if (is_array($list_data) && count($list_data) > 0) {
             $this->errorCode = 1;
         } else {
             $this->errorCode = 0;
-            $this->errorMessage = 'Please check your Username and try again.';
+            $this->errorMessage = 'Please check your email and try again.';
         }
         $error['ID'] = $list_data['ID'];
         $error['username'] = $list_data['Username'];
