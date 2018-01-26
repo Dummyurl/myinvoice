@@ -18,7 +18,7 @@ $name = $this->input->get('name');
                             <tr>
                                 <th>Invoice No</th>
                                 <th>Customer Name</th>
-                                <th>&#8377 Amount</th>
+                                <th><?= CurrSymbol() ?> Amount</th>
                                 <th>Date</th>
                                 <th width="25%">Action</th>                                            
                             </tr>
@@ -30,7 +30,7 @@ $name = $this->input->get('name');
                                 <tr id='<?php echo urlencode($this->general->encryptData($value["ID"])); ?>'>
                                     <td><?php echo "GT/" . str_pad($value['ID'], 3, 0, STR_PAD_LEFT); ?></td>                             
                                     <td><?php echo $value['CustomerName']; ?></td>                             
-                                    <td>&#8377 <?php echo number_format($value['NetAmount'], 2); ?></td>                             
+                                    <td><?php echo CurrSymbol() . " " . number_format($value['NetAmount'], 2); ?></td>                             
                                     <td><?php echo date('M d, Y h:i A', strtotime($value['CreatedOn'])); ?></td>
                                     <td class="text-center">
                                         <a href="<?php echo base_url() . INVOICE_PDF . $value['invoice_name']; ?>" target="_blank"  class="btn btn-primary btn-group-sm" style="background-color: #1abb9c;">

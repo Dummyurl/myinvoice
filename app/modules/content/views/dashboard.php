@@ -53,7 +53,7 @@ include APPPATH . '/modules/views/top.php';
                 <div class="form-group">
                     <button type="submit" style="margin-top: 20px;" class="btn btn-success" id="search" name="search" value="Search">Generate Statement</button>
                     <a style="margin-top: 20px;" href="<?php echo base_url(); ?>" class="btn btn-primary">Reset</a>
-                    <?php if (count($invoice_data) > 0 && $deault_Search==FALSE) { ?>
+                    <?php if (count($invoice_data) > 0 && $deault_Search == FALSE) { ?>
                         <a style="margin-top: 20px;" target="_blank" href="<?php echo base_url(STATEMENT_PDF) . '/' . $pdf_file_name; ?>" class="btn btn-danger">PDF</a>
                     <?php } ?>
                 </div>
@@ -71,7 +71,7 @@ include APPPATH . '/modules/views/top.php';
                                 <th>Month</th>
                                 <th>Year</th>
                                 <th>Date</th>
-                                <th>&#8377 Amount</th>
+                                <th><?= CurrSymbol() ?> Amount</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -87,7 +87,7 @@ include APPPATH . '/modules/views/top.php';
                                         <td><?php echo date('F', strtotime($value['CreatedOn'])); ?></td>
                                         <td><?php echo date('Y', strtotime($value['CreatedOn'])); ?></td>
                                         <td><?php echo date('M d, Y h:i A', strtotime($value['CreatedOn'])); ?></td>
-                                        <td>&#8377 <?php echo number_format($value['NetAmount'], 2); ?></td>
+                                        <td><?php echo CurrSymbol() . " " . number_format($value['NetAmount'], 2); ?></td>
                                     </tr>
                                     <?php
                                 }

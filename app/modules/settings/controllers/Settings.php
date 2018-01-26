@@ -5,6 +5,8 @@ if (!defined('BASEPATH'))
 
 class Settings extends MX_Controller {
 
+    private $UserID;
+
     public function __construct() {
         parent::__construct();
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
@@ -12,14 +14,14 @@ class Settings extends MX_Controller {
         if (!$res) {
             redirect('login');
         }
+        $this->UserID = (int) $this->session->userdata('ID');
         $this->load->model('content/model_support');
         $this->load->model('model_settings');
         $this->load->library('general');
     }
 
     public function index() {
-        $result = $this->model_settings->getData("", "*", "ID=1");
-
+        $result = $this->model_settings->getData("", "*", "UserID=$this->UserID");
         $data['title'] = "Manage settings";
         $data['all'] = $result[0];
         $this->load->view("index", $data);
@@ -55,7 +57,9 @@ class Settings extends MX_Controller {
         $data['PinCode'] = trim($this->input->post('PinCode'));
         $data['GSTPercentage'] = trim($this->input->post('GSTPercentage'));
         $data['State'] = trim($this->input->post('State'));
-        
+        $data['CurrencySymbol'] = trim($this->input->post('CurrencySymbol'));
+        $this->session->set_userdata("CurrSymbol", trim($this->input->post('CurrencySymbol')));
+
         if (isset($_FILES['CompanyLogo']) && $_FILES['CompanyLogo']['name'] != '') {
             $uploadPath = 'assets/upload/images';
             $tmp_name = $_FILES["CompanyLogo"]["tmp_name"];
@@ -65,8 +69,8 @@ class Settings extends MX_Controller {
 
             $data['CompanyLogo'] = $newfilename;
         }
-        
-        $where = "ID=1";
+
+        $where = "ID=$this->UserID";
         $success = $this->model_settings->update('', $data, $where);
         $this->session->set_flashdata('success', "Setting has been updated successfully.");
         redirect("settings");

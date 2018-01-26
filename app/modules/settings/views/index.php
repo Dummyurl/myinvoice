@@ -90,10 +90,25 @@
                                 <input type="file" id="CompanyLogo" name="CompanyLogo" class="form-control col-md-7 col-xs-12">
                             </div>  
                             <?php if ($img_url != '') { ?>
-                            <div class="avatar-view" title="" id="vProfileImg" style="height: 100px;margin-top: 20px;margin-bottom: 20px;width: 100px;">
-                                     <img src="<?php echo $this->config->item('upload_url') . 'images/' . $all['CompanyLogo']; ?>"  alt="photo" class="img-responsive" id="CompanyLogoPreView" style="height: 100px;width: 100px;"></a>
+                                <div class="avatar-view" title="" id="vProfileImg" style="height: 100px;margin-top: 20px;margin-bottom: 20px;width: 100px;">
+                                    <img src="<?php echo $this->config->item('upload_url') . 'images/' . $all['CompanyLogo']; ?>"  alt="photo" class="img-responsive" id="CompanyLogoPreView" style="height: 100px;width: 100px;"></a>
                                 </div>
                             <?php } ?>
+                        </div>
+                        <div class="col-md-4 col-sm-6 col-xs-12">
+                            <div class="form-group">
+                                <label for="CurrencySymbol">Currency Symbol<span class="required">*</span></label>
+                                <select name="CurrencySymbol" id="CurrencySymbol" class="form-control" required="">
+                                    <option value="">Select Currency Symbol</option>
+                                    <option value="₵">Cedi ( ₵ )</option>
+                                    <option value="$">Dollar ( $ )</option>
+                                    <option value="€">Euro ( € )</option>
+                                    <option value="ƒ">Florin ( ƒ )</option>
+                                    <option value="£">Pound ( £ )</option>
+                                    <option value="₹">Rupee ( ₹ )</option>
+                                    <option value="¥">Yuan ( ¥ )</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
