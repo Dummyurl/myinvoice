@@ -18,7 +18,8 @@ include APPPATH . '/modules/views/top.php';
                                 <th>Phone</th>
                                 <th>GST No</th>
                                 <th>Address</th>
-                                <th width="15%">Action</th>                                            
+                                <th class="text-center">Status</th>
+                                <th width="20%" class="text-center">Action</th>                                            
                             </tr>
                         </thead>
                         <tbody>
@@ -32,9 +33,17 @@ include APPPATH . '/modules/views/top.php';
                                     <td><?php echo $value['Phone']; ?></td>                             
                                     <td><?php echo $value['GSTno']; ?></td>                             
                                     <td><?php echo $value['Address']; ?></td>                             
+                                    <td class="text-center" style="padding-top: 12px;"><span class="alert alert-<?php echo isset($value['Status']) && $value['Status'] == 'A' ? "success" : "danger"; ?>" style="padding: 8px;"><?php echo isset($value['Status']) && $value['Status'] == 'A' ? "Active" : "Inactive"; ?></span></td>                             
                                     <td class="text-center">
+                                        <?php $status = isset($value['Status']) && $value['Status'] == 'A' ? 'I' : 'A'; ?>
+                                        <a href="<?php echo base_url('customer/customer_status?id=') . $value['ID'] . "&status=" . $status; ?>"  class="btn btn-primary btn-group-sm">
+                                            <i class="fa fa-<?php echo isset($value['Status']) && $value['Status'] == 'A' ? "eye-slash" : "eye"; ?>"></i>
+                                        </a>
                                         <a href="<?php echo base_url() . "edit_customer?id=" . $value["ID"]; ?>"  class="btn btn-primary btn-group-sm" style="background-color: #1abb9c;">
-                                            <center>Update</center>
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a href="<?php echo base_url() . "customer/delete_customer?id=" . $value["ID"]; ?>"  class="btn btn-danger btn-group-sm">
+                                            <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>

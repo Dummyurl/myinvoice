@@ -5,6 +5,8 @@ if (!defined('BASEPATH'))
 
 class Invoice extends MX_Controller {
 
+    private $UserID;
+
     public function __construct() {
         parent::__construct();
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
@@ -12,6 +14,7 @@ class Invoice extends MX_Controller {
         if (!$res) {
             redirect('login');
         }
+        $this->UserID = (int) $this->session->userdata('ID');
         $this->load->model('model_invoice');
         $this->load->model('content/model_support');
         $this->load->library('general');
@@ -50,6 +53,7 @@ class Invoice extends MX_Controller {
             $total_sgst = $this->input->post('total_sgst');
             $Customer = $this->input->post('Customer');
 
+            $invoice_data['UserID'] = $this->UserID;
             $invoice_data['CustomerID'] = $Customer;
             $invoice_data['CustomerName'] = $CustomerName;
             $invoice_data['CustomerPhone'] = $CustomerPhone;
