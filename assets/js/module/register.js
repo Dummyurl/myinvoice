@@ -13,6 +13,9 @@ $(document).ready(function () {
             Lastname: {
                 required: true
             },
+            Username: {
+                required: true
+            },
             Email: {
                 required: true,
                 email: true
@@ -40,6 +43,9 @@ $(document).ready(function () {
             Lastname: {
                 required: "Please enter your lastname",
             },
+            Username: {
+                required: "Please enter your username",
+            },
             Email: {
                 required: "Please enter your email",
                 email: "Please enter a valid email"
@@ -59,10 +65,10 @@ $(document).ready(function () {
                 equalTo: "Password and confirm password must be same."
             },
         },
-        errorPlacement: function (error, element) {
-            var name = $(element).attr("name");
-            error.appendTo($("#" + name + "_validate"));
-        },
+//        errorPlacement: function (error, element) {
+//            var name = $(element).attr("name");
+//            error.appendTo($("#" + name + "_validate"));
+//        },
     });
 
 });
