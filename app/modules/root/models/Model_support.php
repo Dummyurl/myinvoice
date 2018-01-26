@@ -6,6 +6,7 @@ Class Model_support extends CI_Model {
     private $main_table;
     public $errorCode;
     public $errorMessage;
+    public $DataID;
 
     public function __construct() {
         parent::__construct();
@@ -27,7 +28,8 @@ Class Model_support extends CI_Model {
             $this->db->where('UserID', $UserID);
             $result_master = $this->db->get()->result_array();
             if (count($result_master) > 0) {
-                $this->errorCode = 0;
+                $this->DataID = $UserID;
+                $this->errorCode = 2;
                 $this->errorMessage = 'Are you already login another Browser please logout and try again.';
             } else {
                 $this->session->set_userdata("ID", $record[0]["ID"]);
@@ -46,7 +48,9 @@ Class Model_support extends CI_Model {
             $this->errorCode = 0;
             $this->errorMessage = 'Please check your Username or Password and try again.';
         }
-
+        if ($this->DataID) {
+            $error['DataID'] = $this->DataID;
+        }
         $error['errorCode'] = $this->errorCode;
         $error['errorMessage'] = $this->errorMessage;
 

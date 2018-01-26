@@ -15,6 +15,7 @@ $route['forgotpassword'] = 'root/forgotpassword';
 $route['reset_password_user'] = 'root/reset_password_user';
 $route['profile'] = 'root/profile';
 $route['profile_action'] = 'root/profile_action';
+$route['browser_logout'] = 'root/browser_logout';
 /*
  *  Frontend Routes
  */

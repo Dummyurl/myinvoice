@@ -5,6 +5,8 @@ if (!defined('BASEPATH'))
 
 class Root extends MX_Controller {
 
+    private $DataID;
+
     public function __construct() {
         parent::__construct();
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
@@ -88,7 +90,11 @@ class Root extends MX_Controller {
             $this->cookie->write('userarray', $cookiedata);
         }
         $rply = $this->model_support->authenticate($postvar['email'], md5($postvar['password']));
-        if ($rply['errorCode'] == 1) {
+        if ($rply['errorCode'] == 2) {
+            $this->session->set_flashdata('failure', $rply['errorMessage']);
+            $this->DataID = $rply['DataID'];
+            $this->browser_logout();
+        } elseif ($rply['errorCode'] == 1) {
             $this->session->set_flashdata('success', 'Welcome to ' . MY_SITE_NAME);
             redirect('dashboard');
         } else {
@@ -100,6 +106,11 @@ class Root extends MX_Controller {
     // Forgot Password
     public function forgotpassword() {
         $this->load->view('forgot_password');
+    }
+
+    public function browser_logout() {
+        $data['UserID'] = $this->DataID;
+        $this->load->view('logout', $data);
     }
 
     public function forgotpassword_action() {
@@ -180,7 +191,12 @@ class Root extends MX_Controller {
     }
 
     public function logout() {
-        $user_id = $this->session->userdata('ID');
+        $Post_UserID = (int) $this->input->post('UserID');
+        if ($Post_UserID > 0) {
+            $user_id = $Post_UserID;
+        } else {
+            $user_id = $this->session->userdata('ID');
+        }
         $deleted = $this->model_support->delete("tbl_login_master", "UserID=" . $user_id);
         $this->session->sess_destroy();
         $this->session->set_flashdata('success', 'logout successfully');
