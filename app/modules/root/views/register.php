@@ -69,9 +69,16 @@
 
                 <div id="login" class="animate form col-xs-12">
                     <section class="login_content" style="margin-top:4px;">
-                        <form id="login_form" action="<?php echo $this->config->item("site_url") . "root/register_action"; ?>" method="post" >
-                            
+                        <div>
+                            <h1 style="color: white">User Registration</h1>
+                        </div>
+                        <form id="register_form" action="<?php echo $this->config->item("site_url") . "root/register_action"; ?>" method="post" >
+
                             <div class="row">
+                                <div class="col-md-12">
+                                    <p>User Name</p>
+                                    <input type="text" placeholder="Username" class="form-control" name="Username" value="" id="Username" />
+                                </div>
                                 <div class="col-md-6">
                                     <p>First Name</p>
                                     <input type="text" placeholder="Firstname" class="form-control" name="Firstname" value="" id="Firstname" />
@@ -80,9 +87,6 @@
                                     <p>Last Name</p>
                                     <input type="text" placeholder="Lastname" class="form-control" name="Lastname" value="" id="Lastname" />
                                 </div>
-                            </div>
-                            
-                            <div class="row">
                                 <div class="col-md-6">
                                     <p>Email</p>
                                     <input type="text" placeholder="Email" class="form-control" name="Email" value="" id="Email" />
@@ -91,16 +95,7 @@
                                     <p>Phone No</p>
                                     <input type="text" placeholder="Phone" class="form-control" name="Phone" value="" id="Phone" />
                                 </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p>User Name</p>
-                                    <input type="text" placeholder="Username" class="form-control" name="Username" value="" id="Username" />
-                                </div>
-                            </div>
-                            
-                            <div class="row">
+
                                 <div class="col-md-6">
                                     <p>Password</p>
                                     <input type="password" placeholder="Password" class="form-control" name="Password" value="" id="Password" />
@@ -109,6 +104,7 @@
                                     <p>Confirm Password</p>
                                     <input type="password" placeholder="Cpassword" class="form-control" name="Cpassword" value="" id="Cpassword" />
                                 </div>
+                                
                             </div>
 
                             <div>

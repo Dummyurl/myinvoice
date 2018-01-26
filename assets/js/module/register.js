@@ -5,12 +5,15 @@ $(document).ready(function () {
         return this.optional(element) || /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,20}$/.test(value);
     }, "Please enter valid password.");
 
-    $("#login_form").validate({
+    $("#register_form").validate({
         rules: {
             Firstname: {
                 required: true,
             },
             Lastname: {
+                required: true
+            },
+            Username: {
                 required: true
             },
             Email: {
@@ -40,6 +43,9 @@ $(document).ready(function () {
             Lastname: {
                 required: "Please enter your lastname",
             },
+            Username: {
+                required: "Please enter your username",
+            },
             Email: {
                 required: "Please enter your email",
                 email: "Please enter a valid email"
@@ -59,10 +65,10 @@ $(document).ready(function () {
                 equalTo: "Password and confirm password must be same."
             },
         },
-        errorPlacement: function (error, element) {
-            var name = $(element).attr("name");
-            error.appendTo($("#" + name + "_validate"));
-        },
+//        errorPlacement: function (error, element) {
+//            var name = $(element).attr("name");
+//            error.appendTo($("#" + name + "_validate"));
+//        },
     });
 
 });

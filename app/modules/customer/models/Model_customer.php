@@ -111,7 +111,6 @@ class Model_customer extends CI_Model {
     }
 
     function delete($tbl = '', $where, $where_data) {
-        $this->db->_protect_identifiers = false;
         if ($tbl == '') {
             $tbl = $this->main_table;
         }

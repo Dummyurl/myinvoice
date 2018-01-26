@@ -5,6 +5,8 @@ if (!defined('BASEPATH'))
 
 class Customer extends MX_Controller {
 
+    private $UserID;
+
     public function __construct() {
         parent::__construct();
         error_reporting(E_ALL ^ (E_NOTICE | E_WARNING));
@@ -12,6 +14,7 @@ class Customer extends MX_Controller {
         if (!$res) {
             redirect('login');
         }
+        $this->UserID = (int) $this->session->userdata('ID');
         $this->load->model('content/model_support');
         $this->load->model('model_customer');
         $this->load->library('general');
@@ -58,6 +61,7 @@ class Customer extends MX_Controller {
 
     public function add_invoice_action() {
 
+        $customer_data['UserID'] = $this->UserID;
         $customer_data['Firstname'] = $this->input->post('Firstname');
         $customer_data['Lastname'] = $this->input->post('Lastname');
         $customer_data['Email'] = $this->input->post('Email');
@@ -88,6 +92,7 @@ class Customer extends MX_Controller {
 
     public function update_invoice_action() {
 
+        $customer_data['UserID'] = $this->UserID;
         $customer_data['Firstname'] = $this->input->post('Firstname');
         $customer_data['Lastname'] = $this->input->post('Lastname');
         $customer_data['Email'] = $this->input->post('Email');
@@ -118,6 +123,23 @@ class Customer extends MX_Controller {
                 redirect("customer");
             }
         }
+    }
+
+    public function delete_customer() {
+        $id = (int) $this->input->get('id');
+        $this->model_customer->delete('', 'ID', $id);
+        $this->session->set_flashdata('success', 'Customer has been deleted successfully.');
+        redirect('customer');
+    }
+
+    public function customer_status() {
+        $id = (int) $this->input->get('id');
+        $customer_data['Status'] = $this->input->get('status');
+        $this->model_customer->update('', $customer_data, "ID=" . $id);
+        $status = $this->input->get('status');
+        $mess = isset($status) && $status == "A" ? "Active" : "Inactive";
+        $this->session->set_flashdata('success', "Customer has been $mess successfully.");
+        redirect('customer');
     }
 
 }
