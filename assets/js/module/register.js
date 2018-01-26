@@ -6,7 +6,6 @@ $(document).ready(function () {
     }, "Please enter valid password.");
 
     $("#register_form").validate({
-        alert();
         rules: {
             Firstname: {
                 required: true,
