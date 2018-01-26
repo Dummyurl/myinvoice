@@ -80,7 +80,8 @@
                                 $img_url = $this->config->item('upload_url') . 'no-image.png';
                             }
                             ?>
-                            <a href="javascript:void(0)" class=""> <span> 
+                            <a href="<?php echo base_url(); ?>" class=""> 
+                                <span> 
                                     <img src="<?php echo $img_url; ?>" >
                                 </span>
                             </a>
