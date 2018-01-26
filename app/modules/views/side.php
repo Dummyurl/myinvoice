@@ -13,7 +13,7 @@
                 $img_url = $this->config->item('upload_url') . 'no-image.png';
             }
             ?>
-            <a href="<?php echo $this->config->item("site_url") . "dashboard"; ?>" class="site_title"> <span> <img src="<?= $img_url ?>"style="margin-left:38px;width: 120px;height: 90px;"></span></a>
+            <a href="<?php echo $this->config->item("site_url"); ?>" class="site_title"> <span> <img src="<?= $img_url ?>"style="margin-left:38px;width: 120px;height: 90px;"></span></a>
         </div>
         <div class="clearfix"></div>
         <br />  
