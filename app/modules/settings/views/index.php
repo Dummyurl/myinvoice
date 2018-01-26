@@ -101,13 +101,26 @@
                                 <?php $currency = ($all['CurrencySymbol'] != '') ? $all['CurrencySymbol'] : ''; ?>"
                                 <select name="CurrencySymbol" id="CurrencySymbol" class="form-control" required="">
                                     <option value="">Select Currency Symbol</option>
-                                    <option value="₵" <?php echo isset($currency) && $currency == "₵" ? "selected" : ""; ?>>Cedi ( ₵ )</option>
-                                    <option value="$" <?php echo isset($currency) && $currency == "$" ? "selected" : ""; ?>>Dollar ( $ )</option>
-                                    <option value="€" <?php echo isset($currency) && $currency == "€" ? "selected" : ""; ?>>Euro ( € )</option>
-                                    <option value="ƒ" <?php echo isset($currency) && $currency == "ƒ" ? "selected" : ""; ?>>Florin ( ƒ )</option>
-                                    <option value="£" <?php echo isset($currency) && $currency == "£" ? "selected" : ""; ?>>Pound ( £ )</option>
-                                    <option value="₹" <?php echo isset($currency) && $currency == "₹" ? "selected" : ""; ?>>Rupee ( ₹ )</option>
-                                    <option value="¥" <?php echo isset($currency) && $currency == "¥" ? "selected" : ""; ?>>Yuan ( ¥ )</option>
+                                    <option value="&#164;" <?php echo isset($currency) && $currency == "¤" ? "selected" : ""; ?>>Generic ( &#164; )</option>
+                                    <option value="&#036;" <?php echo isset($currency) && $currency == "$" ? "selected" : ""; ?>>Dollar ( &#036; )</option>
+                                    <option value="&#162;" <?php echo isset($currency) && $currency == "¢" ? "selected" : ""; ?>>Cent ( &#162; )</option>
+                                    <option value="&#163;" <?php echo isset($currency) && $currency == "£" ? "selected" : ""; ?>>Pound ( &#163; )</option>
+                                    <option value="&#165;" <?php echo isset($currency) && $currency == "¥" ? "selected" : ""; ?>>Yen ( &#165; )</option>
+                                    <option value="&#8355;" <?php echo isset($currency) && $currency == "₣" ? "selected" : ""; ?>>Franc ( &#8355; )</option>
+                                    <option value="&#8356;" <?php echo isset($currency) && $currency == "₤" ? "selected" : ""; ?>>Lira ( &#8356; )</option>
+                                    <option value="&#8359;" <?php echo isset($currency) && $currency == "₧" ? "selected" : ""; ?>>Peseta ( &#8359; )</option>
+                                    <option value="&#128;" <?php echo isset($currency) && $currency == "€" ? "selected" : ""; ?>>Euro ( &#128; )</option>
+                                    <option value="&#x20B9;" <?php echo isset($currency) && $currency == "₹" ? "selected" : ""; ?>>Rupee ( &#x20B9; )</option>
+                                    <option value="&#8361;" <?php echo isset($currency) && $currency == "₩" ? "selected" : ""; ?>>Won ( &#8361; )</option>
+                                    <option value="&#8372;" <?php echo isset($currency) && $currency == "₴" ? "selected" : ""; ?>>Hryvnia ( &#8372; )</option>
+                                    <option value="&#8367;" <?php echo isset($currency) && $currency == "₯" ? "selected" : ""; ?>>Drachma ( &#8367; )</option>
+                                    <option value="&#8366;" <?php echo isset($currency) && $currency == "₮" ? "selected" : ""; ?>>Tugrik ( &#8366; )</option>
+                                    <option value="&#8368;" <?php echo isset($currency) && $currency == "₰" ? "selected" : ""; ?>>German ( &#8368; )</option>
+                                    <option value="&#8370;" <?php echo isset($currency) && $currency == "₲" ? "selected" : ""; ?>>Guarani ( &#8370; )</option>
+                                    <option value="&#8369;" <?php echo isset($currency) && $currency == "₱" ? "selected" : ""; ?>>Peso ( &#8369; )</option>
+                                    <option value="&#8371;" <?php echo isset($currency) && $currency == "₳" ? "selected" : ""; ?>>Austral ( &#8371; )</option>
+                                    <option value="&#8373;" <?php echo isset($currency) && $currency == "₵" ? "selected" : ""; ?>>Cedi ( &#8373; )</option>
+                                    <option value="&#8365;" <?php echo isset($currency) && $currency == "₭" ? "selected" : ""; ?>>Kip ( &#8365; )</option>
                                 </select>
                             </div>
                         </div>

@@ -21,23 +21,23 @@ Class Model_support extends CI_Model {
         $result = $this->db->get();
         $record = $result->result_array();
         if (is_array($record) && count($record) > 0) {
-            $this->session->set_userdata("ID", $record[0]["ID"]);
-            $this->session->set_userdata("UNAME", $record[0]["Username"]);
-            $this->session->set_userdata("FNAME", $record[0]["Firstname"]);
-            $this->session->set_userdata("LNAME", $record[0]["Lastname"]);
-            $this->session->set_userdata("EMAIL", $record[0]["Email"]);
-            $this->session->set_userdata("IMAGE", $record[0]["ProfileImage"]);
-            $this->errorCode = 1;
-
+            $UserID = $record[0]['ID'];
             $this->db->select('*');
             $this->db->from('tbl_login_master');
-            $this->db->where('UserID', $record[0]["ID"]);
-            $result = $this->db->get();
-            $num = $result->num_rows();
-            if ($num > 0) {
+            $this->db->where('UserID', $UserID);
+            $result_master = $this->db->get()->result_array();
+            if (count($result_master) > 0) {
                 $this->errorCode = 0;
                 $this->errorMessage = 'Are you already login another Browser please logout and try again.';
             } else {
+                $this->session->set_userdata("ID", $record[0]["ID"]);
+                $this->session->set_userdata("UNAME", $record[0]["Username"]);
+                $this->session->set_userdata("FNAME", $record[0]["Firstname"]);
+                $this->session->set_userdata("LNAME", $record[0]["Lastname"]);
+                $this->session->set_userdata("EMAIL", $record[0]["Email"]);
+                $this->session->set_userdata("IMAGE", $record[0]["ProfileImage"]);
+                $this->errorCode = 1;
+
                 $data = array('UserID' => $record[0]["ID"], 'CreatedOn' => date("Y-m-d H:i:s"));
                 $this->db->insert('tbl_login_master', $data);
                 $insert_id = $this->db->insert_id();
@@ -191,7 +191,7 @@ Class Model_support extends CI_Model {
         $this->db->from("country");
         $this->db->stop_cache();
         $list_data = $this->db->get()->result_array();
-        //echo $this->db->last_query();exit;
+//echo $this->db->last_query();exit;
         $this->db->flush_cache();
 
         return $list_data;
@@ -205,7 +205,7 @@ Class Model_support extends CI_Model {
         $this->db->from("country");
         $this->db->stop_cache();
         $list_data = $this->db->get()->result_array();
-        //echo $this->db->last_query();exit;
+//echo $this->db->last_query();exit;
         $this->db->flush_cache();
         foreach ($list_data as $currency) {
             $currencyname = $currency['vCurrencyName'] . " (" . $currency['vCountry'] . ")";
@@ -224,7 +224,7 @@ Class Model_support extends CI_Model {
         $this->db->from("industry_master");
         $this->db->stop_cache();
         $list_data = $this->db->get()->result_array();
-        //echo $this->db->last_query();exit;
+//echo $this->db->last_query();exit;
         $this->db->flush_cache();
 
         return $list_data;
@@ -236,7 +236,7 @@ Class Model_support extends CI_Model {
         $this->db->from("department_master");
         $this->db->stop_cache();
         $list_data = $this->db->get()->result_array();
-        //echo $this->db->last_query();exit;
+//echo $this->db->last_query();exit;
         $this->db->flush_cache();
 
         return $list_data;
@@ -248,7 +248,7 @@ Class Model_support extends CI_Model {
         $this->db->from("fields_master");
         $this->db->stop_cache();
         $list_data = $this->db->get()->result_array();
-        //echo $this->db->last_query();exit;
+//echo $this->db->last_query();exit;
         $this->db->flush_cache();
 
         return $list_data;
@@ -260,7 +260,7 @@ Class Model_support extends CI_Model {
         $this->db->from("stage_master");
         $this->db->stop_cache();
         $list_data = $this->db->get()->result_array();
-        //echo $this->db->last_query();exit;
+//echo $this->db->last_query();exit;
         $this->db->flush_cache();
 
         return $list_data;
@@ -284,7 +284,7 @@ Class Model_support extends CI_Model {
         $this->db->from("vendor_master");
         $this->db->stop_cache();
         $list_data = $this->db->get()->result_array();
-        //echo $this->db->last_query();
+//echo $this->db->last_query();
         $this->db->flush_cache();
 
         return $list_data;
@@ -359,7 +359,7 @@ Class Model_support extends CI_Model {
 
     function checkDataExist($tbl) {
         if ($tbl == "activities") {
-            // Task Master
+// Task Master
             $this->db->select("count(*) as taskcount");
             $this->db->from("task_master");
             if (strtolower($this->config->item('CRM_USER_PROFILE')) == "administration") {
@@ -371,7 +371,7 @@ Class Model_support extends CI_Model {
             $result1 = $this->db->get()->result_array();
             $taskcount = $result1[0]['taskcount'];
 
-            // Event Master
+// Event Master
             $this->db->select("count(*) as eventcount");
             $this->db->from("event_master");
             if (strtolower($this->config->item('CRM_USER_PROFILE')) == "administration") {
@@ -383,7 +383,7 @@ Class Model_support extends CI_Model {
             $result2 = $this->db->get()->result_array();
             $eventcount = $result2[0]['eventcount'];
 
-            // Call Master
+// Call Master
             $this->db->select("count(*) as callcount");
             $this->db->from("call_master");
             if (strtolower($this->config->item('CRM_USER_PROFILE')) == "administration") {
@@ -462,7 +462,7 @@ Class Model_support extends CI_Model {
     }
 
     function insertActivity($data = array()) {
-        //pr($data);
+//pr($data);
         $tbl = 'activity_master';
 
         $type = $data['eItemType'];
@@ -488,7 +488,7 @@ Class Model_support extends CI_Model {
             $updata['dtModify'] = date('Y-m-d H:i:s');
             $this->update($tbl, $updata, $upwhere);
         }
-        // echo $this->db->last_query();
+// echo $this->db->last_query();
         return $insert_id;
     }
 
@@ -558,7 +558,7 @@ Class Model_support extends CI_Model {
                 $module = "Event";
                 $name = "vTitle";
                 $fid = 'iEventId';
-                //$fields = "*,convert_tz(dtRepeatStartDate,'ETC/GMT','" . $user_timezone . "') as dtRepeatStartDate,convert_tz(dtRepeatEndDate,'ETC/GMT','" . $user_timezone . "') as dtRepeatEndDate";
+//$fields = "*,convert_tz(dtRepeatStartDate,'ETC/GMT','" . $user_timezone . "') as dtRepeatStartDate,convert_tz(dtRepeatEndDate,'ETC/GMT','" . $user_timezone . "') as dtRepeatEndDate";
                 $exclude_fields = array('iEventId', 'iCompanyId', 'iCreatedBy', 'dtCreated', 'iModifyBy', 'dtModify', 'isDelete');
                 $referenceField = array('iAssignedId' => 'user_master:iUserId:CONCAT(vSalutation," ",vFirstName," ",vMiddleName," ",vLastName)', 'iCountryId' => 'country:iCountryId:vCountry', 'iCallId' => 'dynamictable:eCallTo:name', 'iRelatedId' => 'dynamictable:eRelatedTo:name');
                 $otherField = array('Lead' => 'lead_master:iLeadId:CONCAT(vFirstName," ",vLastName)', 'Contact' => 'contact_master:iContactId:CONCAT(vSalutation," ",vFirstName," ",vMiddleName," ",vLastName)', 'Account' => 'account_master:iAccountId:vName', 'Potential' => 'potential_master:iPotentialId:vName', 'Vendor' => 'vendor_master:iVendorId:vName', 'Representative' => 'vendor_representative:iRepId:vName', 'Product' => 'product_master:iProductId:vName', 'Case' => 'case_master:iCaseId:vSubject');
@@ -587,20 +587,20 @@ Class Model_support extends CI_Model {
 
         $result = $this->db->query("SELECT * FROM " . $tbl . " WHERE " . $idField . " = " . $id)->result_array();
         $result1 = $result[0];
-        //$j = 0;
+//$j = 0;
         $message = "";
-        // echo $j;
+// echo $j;
         foreach ($result1 as $key => $value) {
-            //echo 'dbkey[' . $key . '] ====> ' . $value . ' ====> ' . $postArray[$key] . '<br/>';
+//echo 'dbkey[' . $key . '] ====> ' . $value . ' ====> ' . $postArray[$key] . '<br/>';
             if ($tbl == 'product_master' && $postArray['iPrimaryRepId'] != '' && $j == 0) {
                 $repassociationquery = 'SELECT group_concat(pra.iRepId) as rep_list_id,group_concat((SELECT vName FROM vendor_representative as vr WHERE vr.iRepId = pra.iRepId)) as rep_list from product_representative_association as pra WHERE iProductId ="' . $id . '"';
                 $replist = $this->db->query($repassociationquery)->result_array();
                 $fromreplistid = $replist[0]['rep_list_id'];
                 $fromreplist = $replist[0]['rep_list'];
-                //echo $fromreplistid;
+//echo $fromreplistid;
                 $fromreplistidArr = explode(",", $fromreplistid);
-                //pr($fromreplistidArr);
-                // pr($postArray['iPrimaryRepId']);
+//pr($fromreplistidArr);
+// pr($postArray['iPrimaryRepId']);
 
                 if (count($fromreplistidArr) > count($postArray['iPrimaryRepId'])) {
                     $arraydiff = array_diff($fromreplistidArr, $postArray['iPrimaryRepId']);
@@ -608,7 +608,7 @@ Class Model_support extends CI_Model {
                     $arraydiff = array_diff($postArray['iPrimaryRepId'], $fromreplistidArr);
                 }
 
-                //  pr($arraydiff);
+//  pr($arraydiff);
                 if (count($arraydiff) > 0) {
 
                     for ($v = 0; $v < count($postArray['iPrimaryRepId']); $v++) {
@@ -738,7 +738,7 @@ Class Model_support extends CI_Model {
                                 $tovalue = 'blank value';
                             }
                         }
-                        //exit;
+//exit;
                         if ($value != 0) {
                             $fromData = $this->db->query("SELECT " . $fromfetchField . " FROM " . $fromtable . " WHERE " . $fromfetchId . " = " . $value)->result_array();
                             $fromvalue = $fromData[0][$fromfetchField];
@@ -756,7 +756,7 @@ Class Model_support extends CI_Model {
                         }
                     }
 
-                    // echo $tovalue;
+// echo $tovalue;
 
                     $prefix = substr($key, 0, 2);
 
@@ -766,7 +766,7 @@ Class Model_support extends CI_Model {
                             $dateArr['#to' . $key . '#'] = $tovalue;
                             $fromvalue = '#from' . $key . '#';
                             $tovalue = '#to' . $key . '#';
-                            //$tovalue = $this->general->changetimefromUTC($tovalue);
+//$tovalue = $this->general->changetimefromUTC($tovalue);
                         }
                         $skipCharNum = 2;
                     } else {
@@ -819,7 +819,7 @@ Class Model_support extends CI_Model {
                 $returnstring = "modified " . $message;
             }
         }
-        //pr($returnstring, 1);
+//pr($returnstring, 1);
         return $returnstring;
     }
 
@@ -1027,7 +1027,7 @@ Class Model_support extends CI_Model {
         $ext_cond = $itemIdField . ' = ' . $itemId;
         $this->update($itemTable, $updateField, $ext_cond);
 
-        // insert activity code
+// insert activity code
         $addActivity['iUserId'] = $this->session->userdata('iUserId');
         $addActivity['iItemId'] = $itemId;
         $addActivity['eItemType'] = $itemType;
@@ -1083,7 +1083,7 @@ Class Model_support extends CI_Model {
         $this->db->where($activityWhere);
         $tasks = $this->db->get('task_master')->result();
         foreach ($tasks as $t) {
-            //$this->insertDeletedActivity("Task", $t->iTaskId, $t->vSubject);
+//$this->insertDeletedActivity("Task", $t->iTaskId, $t->vSubject);
             $this->insertUpdateMessage('task_master', $t->iTaskId, array(), 'delete');
         }
         $this->update('task_master', $datadel, $activityWhere);
@@ -1092,7 +1092,7 @@ Class Model_support extends CI_Model {
         $this->db->where($activityWhere);
         $events = $this->db->get('event_master')->result();
         foreach ($events as $e) {
-            //$this->insertDeletedActivity("Event", $e->iEventId, $e->vTitle);
+//$this->insertDeletedActivity("Event", $e->iEventId, $e->vTitle);
             $this->insertUpdateMessage('event_master', $e->iEventId, array(), 'delete');
         }
         $this->update('event_master', $datadel, $activityWhere);
@@ -1101,7 +1101,7 @@ Class Model_support extends CI_Model {
         $this->db->where($activityWhere1);
         $calls = $this->db->get('call_master')->result();
         foreach ($calls as $c) {
-            //$this->insertDeletedActivity("Call", $c->iCallId, $c->vSubject);
+//$this->insertDeletedActivity("Call", $c->iCallId, $c->vSubject);
             $this->insertUpdateMessage('call_master', $c->iCallId, array(), 'delete');
         }
         $this->update('call_master', $datadel, $activityWhere1);
@@ -1347,7 +1347,7 @@ Class Model_support extends CI_Model {
 
         $where2 = 'iAssignedId = ' . $fromUserId . ' AND isDelete != 1';
 
-        // Task Master
+// Task Master
         $this->db->where($where2);
         $tasks1 = $this->db->get('task_master')->result();
         foreach ($tasks1 as $t1) {
@@ -1355,7 +1355,7 @@ Class Model_support extends CI_Model {
         }
         $this->update('task_master', $postvar2, $where2);
 
-        // Event Master
+// Event Master
         $this->db->where($where2);
         $events1 = $this->db->get('event_master')->result();
         foreach ($events1 as $e1) {
@@ -1363,7 +1363,7 @@ Class Model_support extends CI_Model {
         }
         $this->update('event_master', $postvar2, $where2);
 
-        // Call Master
+// Call Master
         $this->db->where($where2);
         $calls1 = $this->db->get('call_master')->result();
         foreach ($calls1 as $c1) {
@@ -1379,7 +1379,7 @@ Class Model_support extends CI_Model {
         $postvar1['iModifyBy'] = $this->session->userdata('iUserId');
         $postvar1['dtModify'] = date('Y-m-d H:i:s');
 
-        // Task Master
+// Task Master
         $this->db->where($where1);
         $tasks = $this->db->get('task_master')->result();
 
@@ -1388,7 +1388,7 @@ Class Model_support extends CI_Model {
         }
         $this->update('task_master', $postvar1, $where1);
 
-        // Event Master
+// Event Master
         $this->db->where($where1);
         $events = $this->db->get('event_master')->result();
         foreach ($events as $e) {
@@ -1396,7 +1396,7 @@ Class Model_support extends CI_Model {
         }
         $this->update('event_master', $postvar1, $where1);
 
-        // Call Master
+// Call Master
         $this->db->where($where1);
         $calls = $this->db->get('call_master')->result();
         foreach ($calls as $c) {
@@ -1410,7 +1410,7 @@ Class Model_support extends CI_Model {
         $postvar['iModifyBy'] = $this->session->userdata('iUserId');
         $postvar['dtModify'] = date('Y-m-d H:i:s');
 
-        // Lead Master
+// Lead Master
         $this->db->where($where);
         $leads = $this->db->get('lead_master')->result();
         foreach ($leads as $l) {
@@ -1419,7 +1419,7 @@ Class Model_support extends CI_Model {
         }
         $this->update('lead_master', $postvar, $where);
 
-        // Account Master
+// Account Master
         $this->db->where($where);
         $accounts = $this->db->get('account_master')->result();
         foreach ($accounts as $a) {
@@ -1427,7 +1427,7 @@ Class Model_support extends CI_Model {
         }
         $this->update('account_master', $postvar, $where);
 
-        // Contact Master
+// Contact Master
         $this->db->where($where);
         $contacts = $this->db->get('contact_master')->result();
         foreach ($contacts as $c) {
@@ -1436,7 +1436,7 @@ Class Model_support extends CI_Model {
         }
         $this->update('contact_master', $postvar, $where);
 
-        // Vendor Master
+// Vendor Master
         $this->db->where($where);
         $vendors = $this->db->get('vendor_master')->result();
         foreach ($vendors as $v) {
@@ -1444,7 +1444,7 @@ Class Model_support extends CI_Model {
         }
         $this->update('vendor_master', $postvar, $where);
 
-        // Vendor Representative
+// Vendor Representative
         $this->db->where($where);
         $representatives = $this->db->get('vendor_representative')->result();
         foreach ($representatives as $r) {
@@ -1452,7 +1452,7 @@ Class Model_support extends CI_Model {
         }
         $this->update('vendor_representative', $postvar, $where);
 
-        // Product Master
+// Product Master
         $this->db->where($where);
         $products = $this->db->get('product_master')->result();
         foreach ($products as $p) {
@@ -1460,7 +1460,7 @@ Class Model_support extends CI_Model {
         }
         $this->update('product_master', $postvar, $where);
 
-        // Potential Master
+// Potential Master
         $this->db->where($where);
         $potentials = $this->db->get('potential_master')->result();
         foreach ($potentials as $p) {

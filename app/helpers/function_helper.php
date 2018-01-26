@@ -20,7 +20,11 @@ function CurrSymbol() {
     $user_data = $CI->db->get()->result_array();
     $CurrSymbol = $user_data[0]['CurrencySymbol'];
     if ($CurrSymbol == '') {
-        $CurrSymbol = "$";
+        if ($CI->session->userdata('CurrSymbol') != '') {
+            $CurrSymbol = $CI->session->userdata('CurrSymbol');
+        } else {
+            $CurrSymbol = "$";
+        }
     }
     return $CurrSymbol;
 }
