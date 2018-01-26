@@ -235,8 +235,6 @@
         var html = '';
         html += '<tr id="mainproductblock' + numItems + '" class="mainproductblock tr_pro_' + numItems + '">';
         html += '<td><input required="" onblur="update_value(' + numItems + ')" tabindex=' + tabindex + ' id="ProductName' + numItems + '" placeholder="Product Name" name="ProductName[]" class="form-control pro_name_' + numItems + '" type="text" value=""></td>';
-        html += '<td><input required="" onblur="update_value(' + numItems + ')" tabindex=' + tabindex + ' id="ProductSize' + numItems + '" placeholder="Product Size" name="ProductSize[]" class="form-control pro_size_' + numItems + '" type="text" value=""></td>';
-        html += '<td><input required="" onblur="update_value(' + numItems + ')" tabindex=' + tabindex + ' id="ProductHSN' + numItems + '" placeholder="HSN" name="ProductHSN[]" class="form-control pro_hsn_' + numItems + '" type="text" value=""></td>';
         html += '<td><input required="" onblur="update_value(' + numItems + ')" tabindex=' + tabindex + ' id="ProductQty' + numItems + '" placeholder="Qty" name="ProductQty[]" class="form-control integer pro_qty_' + numItems + '" min="1" maxlength="10" type="number" value=""></td>';
         html += '<td><input required="" onblur="update_value(' + numItems + ')" tabindex=' + tabindex + ' id="ProductRate' + numItems + '" placeholder="Rate" name="ProductRate[]" class="form-control integer pro_rate_' + numItems + '" type="number" value=""></td>';
         html += '<td><span class="pro_amt_' + numItems + '">0.00</span></td>';
