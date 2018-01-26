@@ -70,7 +70,7 @@
                 <div id="login" class="animate form col-xs-12">
                     <section class="login_content" style="margin-top:4px;">
                         <div>
-                            <h1 style="color: white">User Registration</h1>
+                            <h1 style="color: white">User Registration </h1>
                         </div>
                         <form id="register_form" action="<?php echo $this->config->item("site_url") . "root/register_action"; ?>" method="post" >
 
