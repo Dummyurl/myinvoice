@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <p>Last Name</p>
-                                    <input type="text" placeholder="Lastame" class="form-control" name="Lastame" value="" id="Lastame" />
+                                    <input type="text" placeholder="Lastname" class="form-control" name="Lastname" value="" id="Lastname" />
                                 </div>
                             </div>
                             
@@ -125,6 +125,6 @@
             </div>
         </div>
         <div class="footer">Copyright @ <?php echo date('Y') . "  " . MY_SITE_NAME; ?></div>
-        <script type="text/javascript" src="<?php echo $this->config->item('js_url'); ?>custom/login.js"></script>
+        <script type="text/javascript" src="<?php echo $this->config->item('js_url'); ?>module/register.js"></script>
     </body>
 </html>

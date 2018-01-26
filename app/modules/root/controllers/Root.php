@@ -28,7 +28,7 @@ class Root extends MX_Controller {
 
     public function register_action() {
         $this->form_validation->set_rules('Firstname', 'Firstname ', 'required');
-        $this->form_validation->set_rules('Lastame', 'Lastname ', 'required');
+        $this->form_validation->set_rules('Lastname', 'Lastname ', 'required');
         $this->form_validation->set_rules('Email', 'Email Address', 'required|is_unique[tbl_users.Email]');
         $this->form_validation->set_rules('Phone', 'Phone', 'required|is_unique[tbl_users.Phone] ');
         $this->form_validation->set_rules('Username', 'Username', 'required');
@@ -41,7 +41,7 @@ class Root extends MX_Controller {
         } else {
             $data = array(
                 'Firstname' => $this->input->post('Firstname'),
-                'Lastname' => $this->input->post('Lastame'),
+                'Lastname' => $this->input->post('Lastname'),
                 'Email' => $this->input->post('Email'),
                 'Phone' => $this->input->post('Phone'),
                 'Username' => $this->input->post('Username'),
