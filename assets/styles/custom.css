@@ -4734,8 +4734,8 @@ a.hiddenanchor {
 #wrapper {
     right: 0px;
     margin: 0px auto;
-    margin-top: 5%;
-    max-width: 350px;
+    /*margin-top: 5%;*/
+    max-width: 50%;
     position: relative;
 }
 #register, #login {
