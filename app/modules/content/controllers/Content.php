@@ -137,7 +137,7 @@ class Content extends MX_Controller {
         $invoice_data = $this->model_support->getData("tbl_invoice", "*", $search_condition);
 
         //get all customer
-        $customer_data = $this->model_support->getData("customer", "*");
+        $customer_data = $this->model_support->getData("tbl_customer", "*");
 
         //get all customer
         $year_data = $this->model_support->getData("tbl_invoice", "DISTINCT YEAR(`CreatedOn`) as Year", "", "", "YEAR(`CreatedOn`) ASC");

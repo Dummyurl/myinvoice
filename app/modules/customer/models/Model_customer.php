@@ -7,7 +7,7 @@ class Model_customer extends CI_Model {
 
     public function __construct() {
         parent::__construct();
-        $this->main_table = "customer";
+        $this->main_table = "tbl_customer";
         $this->primary_key = "ID";
     }
 

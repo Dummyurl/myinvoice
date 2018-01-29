@@ -26,6 +26,8 @@ $name = $this->input->get('name');
                         <tbody>
                             <?php
                             foreach ($invoice_data as $key => $value) {
+                                $get_customer = get_customer_details($value['CustomerID']);
+                                $c_email = $get_customer['Email'];
                                 ?>
                                 <tr id='<?php echo urlencode($this->general->encryptData($value["ID"])); ?>'>
                                     <td><?php echo "GT/" . str_pad($value['ID'], 3, 0, STR_PAD_LEFT); ?></td>                             
@@ -36,7 +38,7 @@ $name = $this->input->get('name');
                                         <a href="<?php echo base_url() . INVOICE_PDF . $value['invoice_name']; ?>" target="_blank"  class="btn btn-primary btn-group-sm" style="background-color: #1abb9c;">
                                             <center>View Invoice</center>
                                         </a>
-                                        <a href="javascript:void(0)" data-base_url="<?php echo INVOICE_PDF . $value['invoice_name']; ?>" data-url="<?php echo base_url() . INVOICE_PDF . $value['invoice_name']; ?>" onclick="SendInvoicePopup(this)" class="btn btn-primary btn-group-sm">
+                                        <a href="javascript:void(0)" data-base_url="<?php echo INVOICE_PDF . $value['invoice_name']; ?>" data-url="<?php echo base_url() . INVOICE_PDF . $value['invoice_name']; ?>" data-c_name="<?php echo $value['CustomerName']; ?>" data-c_email="<?php echo $c_email; ?>" onclick="SendInvoicePopup(this)" class="btn btn-primary btn-group-sm">
                                             <center>Send Invoice</center>
                                         </a>
                                     </td>

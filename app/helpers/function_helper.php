@@ -39,4 +39,13 @@ function get_user_details() {
     return $user_data[0];
 }
 
+function get_customer_details($id) {
+    $CI = & get_instance();
+    $CI->db->select('*');
+    $CI->db->from('tbl_customer');
+    $CI->db->where('ID', $id);
+    $user_data = $CI->db->get()->result_array();
+    return $user_data[0];
+}
+
 ?>

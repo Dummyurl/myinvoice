@@ -73,7 +73,7 @@ class Customer extends MX_Controller {
         $this->form_validation->set_rules('Firstname', 'Firstname', 'required');
         $this->form_validation->set_rules('Lastname', 'Lastname', 'required');
         $this->form_validation->set_rules('Email', 'Email', 'valid_email');
-        $this->form_validation->set_rules('Phone', 'Phone', 'required|is_unique[customer.Phone]');
+        $this->form_validation->set_rules('Phone', 'Phone', 'required|is_unique[tbl_customer.Phone]');
         $this->form_validation->set_rules('Address', 'Address', 'required');
 
         if ($this->form_validation->run() == FALSE) {
