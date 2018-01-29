@@ -70,13 +70,7 @@
                 <div id="login" class="animate form col-xs-12">
                     <section class="login_content" style="margin-top:4px;">
                         <div class= "logo">
-                            <a href="<?php echo base_url(); ?>" class=""> 
-                                <span> 
-                                    <div>
-                                        <h1 style="color: white">User Login</h1>
-                                    </div>
-                                </span>
-                            </a>
+                            <a href="javascript:void(0)"> <span> <img src="<?php echo base_url() . "assets/images/logo.png"; ?>"></span></a>
                         </div>
                         <form id="login_form" action="<?php echo $this->config->item("site_url") . "root/login_action"; ?>" method="post" >
                             <div>
