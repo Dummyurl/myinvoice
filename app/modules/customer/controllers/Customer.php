@@ -107,7 +107,7 @@ class Customer extends MX_Controller {
         $this->form_validation->set_rules('Lastname', 'Lastname', 'required');
         $this->form_validation->set_rules('Email', 'Email', 'valid_email');
         $this->form_validation->set_rules('GSTno', 'GSTno', 'trim');
-        $this->form_validation->set_rules('Phone', 'Phone', 'required|edit_customer_unique[customer.Phone.' . $ID . ']');
+        $this->form_validation->set_rules('Phone', 'Phone', 'required|edit_customer_unique[tbl_customer.Phone.' . $ID . ']');
         $this->form_validation->set_rules('Address', 'Address', 'required');
 
         if ($this->form_validation->run() == FALSE) {

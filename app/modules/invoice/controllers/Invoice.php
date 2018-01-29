@@ -33,7 +33,7 @@ class Invoice extends MX_Controller {
     }
 
     public function add_invoice() {
-        $customer_data = $this->model_invoice->getData("customer", "*");
+        $customer_data = $this->model_invoice->getData("tbl_customer", "*");
         $data['title'] = "Add invoice";
         $data['customer_data'] = $customer_data;
         $this->load->view("add_invoice", $data);
