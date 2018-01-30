@@ -4,8 +4,7 @@ $admin_data = get_user_details();
 //echo '<pre>';
 //print_r($admin_data);
 //exit;
-$gst_data = $this->model_support->getGstDetail();
-
+$gst_data = getGstDetail();
 $cgst = 0;
 $sgst = 0;
 $total_gst = 0;
