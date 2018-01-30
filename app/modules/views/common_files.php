@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="<?php echo $this->config->item('css_url'); ?>bootstrap.min.css"/>
+<link rel="stylesheet" href="<?php echo $this->config->item('css_url'); ?>jquery-confirm.css"/>
+
 <link rel="stylesheet" href="<?php echo $this->config->item('css_url'); ?>font-awesome.min.css"/>
 <link rel="stylesheet" href="<?php echo $this->config->item('css_url'); ?>animate.min.css"/>
 <link rel="stylesheet" href="<?php echo $this->config->item('css_url'); ?>custom.css"/>
@@ -17,6 +19,7 @@
 </script> 
 <script type="text/javascript" src="<?php echo $this->config->item('js_url'); ?>jquery.min.js"></script>
 <script type="text/javascript" src="<?php echo $this->config->item('js_url'); ?>bootstrap.min.js"></script>
+<script type="text/javascript" src="<?php echo $this->config->item('js_url'); ?>jquery-confirm.js"></script>
 <script type="text/javascript" src="<?php echo $this->config->item('js_url'); ?>jquery.nicescroll.min.js"></script>
 <script type="text/javascript" src="<?php echo $this->config->item('js_url'); ?>custom.js"></script>
 <script type="text/javascript" src="<?php echo $this->config->item('bootstrap_url'); ?>datatables/jquery.dataTables.min.js"></script>

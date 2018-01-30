@@ -81,10 +81,12 @@ class Customer extends MX_Controller {
         } else {
             $id = $this->model_customer->insert('', $customer_data);
             if ($id) {
-                $this->session->set_flashdata('success', 'Customer has been added successfully.');
+                $this->session->set_flashdata('msg', 'Customer has been added successfully.');
+                $this->session->set_flashdata('msg_class', 'success');
                 redirect("customer");
             } else {
-                $this->session->set_flashdata('failure', 'Unable to add customer.');
+                $this->session->set_flashdata('msg', 'Unable to add customer.');
+                $this->session->set_flashdata('msg_class', 'failure');
                 redirect("customer");
             }
         }
@@ -111,15 +113,16 @@ class Customer extends MX_Controller {
         $this->form_validation->set_rules('Address', 'Address', 'required');
 
         if ($this->form_validation->run() == FALSE) {
-
             $this->load->view('edit_customer');
         } else {
             $id = $this->model_customer->update('', $customer_data, "ID=" . $ID);
             if ($id) {
-                $this->session->set_flashdata('success', 'Customer has been updated successfully.');
+                $this->session->set_flashdata('msg', 'Customer has been updated successfully.');
+                $this->session->set_flashdata('msg_class', 'success');
                 redirect("customer");
             } else {
-                $this->session->set_flashdata('failure', 'Unable to update customer.');
+                $this->session->set_flashdata('msg', 'Unable to update customer.');
+                $this->session->set_flashdata('msg_class', 'failure');
                 redirect("customer");
             }
         }
@@ -128,7 +131,8 @@ class Customer extends MX_Controller {
     public function delete_customer() {
         $id = (int) $this->input->get('id');
         $this->model_customer->delete('', 'ID', $id);
-        $this->session->set_flashdata('success', 'Customer has been deleted successfully.');
+        $this->session->set_flashdata('msg', 'Customer has been deleted successfully.');
+        $this->session->set_flashdata('msg_class', 'success');
         redirect('customer');
     }
 
@@ -138,7 +142,8 @@ class Customer extends MX_Controller {
         $this->model_customer->update('', $customer_data, "ID=" . $id);
         $status = $this->input->get('status');
         $mess = isset($status) && $status == "A" ? "Active" : "Inactive";
-        $this->session->set_flashdata('success', "Customer has been $mess successfully.");
+        $this->session->set_flashdata('msg', "Customer has been $mess successfully.");
+        $this->session->set_flashdata('msg_class', 'success');
         redirect('customer');
     }
 

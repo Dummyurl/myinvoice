@@ -29,3 +29,66 @@ function save_button() {
         $("#SendInvoiceForm").submit();
     }
 }
+
+$("#active-inactive-customer").confirm({
+    title: 'Confirm!',
+    content: 'Are you sure want to change the status?',
+    type: 'red',
+    typeAnimated: true,
+    buttons: {
+        cancel: function () {
+        },
+        confirm: {
+            text: 'Ok',
+            btnClass: 'btn-red',
+            action: function () {
+                var token = $("#active-inactive-customer").attr("data-token");
+                var status = $("#active-inactive-customer").attr("status");
+                $.ajax({
+                    type: "GET",
+                    url: site_url + "customer/customer_status",
+                    data: {id: token, status: status},
+//                      beforeSend: function () {
+//                          $('#loadingmessage').show();
+//                      },
+                    success: function (result) {
+//                      $('#loadingmessage').hide();
+                        location.reload();
+                        $.alert('Status Change');
+                    }
+                });
+            }
+        }
+    }
+});
+
+$("#delete-customer").confirm({
+    title: 'Confirm!',
+    content: 'Are you sure want to delete this customer?',
+    type: 'red',
+    typeAnimated: true,
+    buttons: {
+        cancel: function () {
+        },
+        confirm: {
+            text: 'Ok',
+            btnClass: 'btn-red',
+            action: function () {
+                var token = $("#delete-customer").attr("data-token");
+                $.ajax({
+                    type: "GET",
+                    url: site_url + "customer/delete_customer",
+                    data: {id: token},
+//                      beforeSend: function () {
+//                          $('#loadingmessage').show();
+//                      },
+                    success: function (result) {
+//                      $('#loadingmessage').hide();
+                        location.reload();
+                        $.alert('Customer Deleted');
+                    }
+                });
+            }
+        }
+    }
+});

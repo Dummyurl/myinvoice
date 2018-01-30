@@ -1,12 +1,14 @@
 <?php
 include APPPATH . '/modules/views/top.php';
 ?>
+
 <div class="row">
     <div class="col-xs-12">
         <div class="form-group">
             <h2 style="display: inline-block;">Customer</h2>   
             <a href="<?php echo base_url() . "add_customer/"; ?>" class="btn btn-default btnlist float-right"> <i class="fa fa-plus"></i>&nbsp;Add Customer</a>
         </div>
+        <?php $this->load->view('message'); ?>
         <div class="x_panel">                    
             <div class="x_content">            
                 <div class="table-responsive">
@@ -36,17 +38,16 @@ include APPPATH . '/modules/views/top.php';
                                     <td class="text-center" style="padding-top: 12px;"><span class="alert alert-<?php echo isset($value['Status']) && $value['Status'] == 'A' ? "success" : "danger"; ?>" style="padding: 8px;"><?php echo isset($value['Status']) && $value['Status'] == 'A' ? "Active" : "Inactive"; ?></span></td>                             
                                     <td class="text-center">
                                         <?php $status = isset($value['Status']) && $value['Status'] == 'A' ? 'I' : 'A'; ?>
-                                        <a href="<?php echo base_url('customer/customer_status?id=') . $value['ID'] . "&status=" . $status; ?>"  class="btn btn-primary btn-group-sm">
-                                            <i class="fa fa-<?php echo isset($value['Status']) && $value['Status'] == 'A' ? "eye-slash" : "eye"; ?>"></i>
-                                        </a>
-                                        <a href="<?php echo base_url() . "edit_customer?id=" . $value["ID"]; ?>"  class="btn btn-primary btn-group-sm" style="background-color: #1abb9c;">
-                                            <i class="fa fa-pencil"></i>
-                                        </a>
-                                        <a href="<?php echo base_url() . "customer/delete_customer?id=" . $value["ID"]; ?>"  class="btn btn-danger btn-group-sm">
-                                            <i class="fa fa-trash"></i>
-                                        </a>
+                                        
+                                        
+                                        <!--<a href="<?php // echo base_url('customer/customer_status?id=') . $value['ID'] . "&status=" . $status; ?>" data-target="#delete-record" data-id="<?php echo (int) $value["ID"]; ?>" class="btn btn-primary btn-group-sm"><i class="fa fa-<?php echo isset($value['Status']) && $value['Status'] == 'A' ? "eye-slash" : "eye"; ?>"></i></a>--> 
+
+                                        <a href="<?php echo base_url() . "edit_customer?id=" . $value["ID"]; ?>" class="btn btn-primary btn-group-sm" style="background-color: #1abb9c;"><i class="fa fa-pencil"></i></a>
+
+                                        <a  accesskey="                   "data-token="<?php echo (int) $value["ID"]; ?>" class="btn btn-danger btn-group-sm"  id="delete-customer"><i class="fa fa-trash"></i></a>
+                                        <a status="<?php echo $status; ?>" data-token="<?php echo (int) $value["ID"]; ?>" class="btn btn-primary btn-group-sm" id="active-inactive-customer"><i class="fa fa-<?php echo isset($value['Status']) && $value['Status'] == 'A' ? "eye-slash" : "eye"; ?>"></i></a> 
                                     </td>
-                                </tr>
+                                </tr> 
                                 <?php
                                 $i++;
                             }
@@ -107,5 +108,7 @@ include APPPATH . '/modules/views/top.php';
         </div>
     </div>
 </div>
+
 <script type="text/javascript" src="<?php echo $this->config->item('js_url'); ?>module/invoice.js"></script>
+
 <?php include APPPATH . '/modules/views/footer.php'; ?>
