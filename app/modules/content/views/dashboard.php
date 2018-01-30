@@ -94,7 +94,7 @@ include APPPATH . '/modules/views/top.php';
                                 ?>
                                 <tr style="font-size: 18px">
                                     <td colspan="5" class="text-right"><b>Total Amount</b></td>
-                                    <td><b><?php echo number_format($total_amount, 2); ?></b></td>
+                                    <td><b><?= CurrSymbol() ?><?php echo number_format($total_amount, 2); ?></b></td>
                                 </tr>
                             <?php } else { ?>
                                 <tr style="font-size: 16px">

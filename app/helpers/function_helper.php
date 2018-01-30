@@ -48,4 +48,13 @@ function get_customer_details($id) {
     return $user_data[0];
 }
 
+function getGstDetail() {
+    $CI = & get_instance();
+    $UserID = $CI->session->userdata('ID');
+    $CI->db->select('GSTPercentage');
+    $CI->db->where('UserID', $UserID);
+    $array = $CI->db->get('tbl_setting')->result_array();
+    return $array;
+}
+
 ?>
