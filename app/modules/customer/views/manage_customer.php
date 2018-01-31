@@ -44,7 +44,7 @@ include APPPATH . '/modules/views/top.php';
 
                                         <a href="<?php echo base_url() . "edit_customer?id=" . $value["ID"]; ?>" class="btn btn-primary btn-group-sm" style="background-color: #1abb9c;"><i class="fa fa-pencil"></i></a>
 
-                                        <a  accesskey="                   "data-token="<?php echo (int) $value["ID"]; ?>" class="btn btn-danger btn-group-sm"  id="delete-customer"><i class="fa fa-trash"></i></a>
+                                        <a  accesskey="                   "data-token="<?php echo (int) $value["ID"]; ?>" class="btn btn-danger btn-group-sm"  id="delete-customer" onclick="delete_customer(this);"><i class="fa fa-trash"></i></a>
                                         <a status="<?php echo $status; ?>" data-token="<?php echo (int) $value["ID"]; ?>" class="btn btn-primary btn-group-sm" id="active-inactive-customer"><i class="fa fa-<?php echo isset($value['Status']) && $value['Status'] == 'A' ? "eye-slash" : "eye"; ?>"></i></a> 
                                     </td>
                                 </tr> 

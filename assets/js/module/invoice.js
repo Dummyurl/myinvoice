@@ -3,7 +3,6 @@ $(document).ready(function (e) {
         "searching": true
     });
 });
-
 function SendInvoicePopup($this) {
     $("#SendInvoiceForm")[0].reset();
     var url = $.trim($($this).attr("data-url"));
@@ -62,33 +61,35 @@ $("#active-inactive-customer").confirm({
     }
 });
 
-$("#delete-customer").confirm({
-    title: 'Confirm!',
-    content: 'Are you sure want to delete this customer?',
-    type: 'red',
-    typeAnimated: true,
-    buttons: {
-        cancel: function () {
-        },
-        confirm: {
-            text: 'Ok',
-            btnClass: 'btn-red',
-            action: function () {
-                var token = $("#delete-customer").attr("data-token");
-                $.ajax({
-                    type: "GET",
-                    url: site_url + "customer/delete_customer",
-                    data: {id: token},
-//                      beforeSend: function () {
-//                          $('#loadingmessage').show();
-//                      },
-                    success: function (result) {
-//                      $('#loadingmessage').hide();
-                        location.reload();
-                        $.alert('Customer Deleted');
-                    }
-                });
+function delete_customer() {
+//    $("#delete-customer").confirm({
+    $.confirm({
+        title: 'Confirm!',
+        content: 'Are you sure want to delete this customer?',
+        type: 'red',
+        typeAnimated: true,
+        buttons: {
+            cancel: function () {
+            },
+            confirm: {
+                text: 'Ok',
+                btnClass: 'btn-red',
+                action: function () {
+                    var token = $("#delete-customer").attr("data-token");
+                    $.ajax({
+                        type: "GET",
+                        url: site_url + "customer/delete_customer",
+                        data: {id: token},
+                        beforeSend: function () {
+                            $('#loadingmessage').show();
+                        },
+                        success: function (result) {
+                            $('#loadingmessage').hide();
+                            $.alert('Customer Deleted');
+                        }
+                    });
+                }
             }
         }
-    }
-});
+    });
+}
