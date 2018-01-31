@@ -130,6 +130,20 @@ class Customer extends MX_Controller {
 
     public function delete_customer() {
         $id = (int) $this->input->get('id');
+        $invoice_data = $this->model_customer->getData("tbl_invoice", "*", "CustomerID='$id'");
+        if (count($invoice_data) > 0 && $invoice_data[0]['invoice_name'] != '') {
+            $dirPath = INVOICE_PDF;
+            if (is_dir($dirPath)) {
+                $dir_handle = opendir($dirPath);
+                if (!$dir_handle) {
+                    return false;
+                }
+                while ($file = readdir($dir_handle)) {
+                    if (!is_dir($dirPath . "/" . $invoice_data[0]['invoice_name']))
+                        unlink($dirPath . "/" . $invoice_data[0]['invoice_name']);
+                }
+            }
+        }
         $this->model_customer->delete('', 'ID', $id);
         $this->model_customer->delete('tbl_invoice', 'CustomerID', $id);
         $this->session->set_flashdata('msg', 'Customer has been deleted successfully.');

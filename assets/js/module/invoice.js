@@ -48,9 +48,9 @@ function delete_customer(ele) {
                         type: "GET",
                         url: site_url + "customer/delete_customer",
                         data: {id: token},
-//                        beforeSend: function () {
-//                            $('#loadingmessage').show();
-//                        },
+                        beforeSend: function () {
+                            $('#loadingmessage').show();
+                        },
                         success: function (result) {
                             $('#loadingmessage').hide();
                             window.location.reload();
