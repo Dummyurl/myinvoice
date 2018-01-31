@@ -131,6 +131,7 @@ class Customer extends MX_Controller {
     public function delete_customer() {
         $id = (int) $this->input->get('id');
         $this->model_customer->delete('', 'ID', $id);
+        $this->model_customer->delete('tbl_invoice', 'CustomerID', $id);
         $this->session->set_flashdata('msg', 'Customer has been deleted successfully.');
         $this->session->set_flashdata('msg_class', 'success');
         redirect('customer');
