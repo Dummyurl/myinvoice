@@ -28,6 +28,7 @@ include APPPATH . '/modules/views/top.php';
                             <?php
                             $i = 1;
                             foreach ($invoice_data as $key => $value) {
+//                                echo '<pre>'; print_r($value); exit;
                                 ?>
                                 <tr id='<?php echo urlencode($this->general->encryptData($value["ID"])); ?>'>
                                     <td><?php echo $i; ?></td>                             

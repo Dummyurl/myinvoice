@@ -28,39 +28,6 @@ function save_button() {
         $("#SendInvoiceForm").submit();
     }
 }
-function active_inactive_customer(ele) {
-//$("#active-inactive-customer").confirm({
-    $.confirm({
-        title: 'Confirm!',
-        content: 'Are you sure want to change the status?',
-        type: 'red',
-        typeAnimated: true,
-        buttons: {
-            cancel: function () {
-            },
-            confirm: {
-                text: 'Ok',
-                btnClass: 'btn-red',
-                action: function () {
-                    var token  = $(ele).attr("data-token");
-                    var status = $(ele).attr("status");
-                    $.ajax({
-                        type: "GET",
-                        url: site_url + "customer/customer_status",
-                        data: {id: token, status: status},
-//                      beforeSend: function () {
-//                          $('#loadingmessage').show();
-//                      },
-                        success: function (result) {
-                            $('#loadingmessage').hide();
-                            window.location.reload();
-                        }
-                    });
-                }
-            }
-        }
-    });
-}
 
 function delete_customer(ele) {
 //    $("#delete-customer").confirm({
@@ -84,6 +51,40 @@ function delete_customer(ele) {
 //                        beforeSend: function () {
 //                            $('#loadingmessage').show();
 //                        },
+                        success: function (result) {
+                            $('#loadingmessage').hide();
+                            window.location.reload();
+                        }
+                    });
+                }
+            }
+        }
+    });
+}
+
+function active_inactive_customer(ele) {
+//$("#active-inactive-customer").confirm({
+    $.confirm({
+        title: 'Confirm!',
+        content: 'Are you sure want to change the status?',
+        type: 'red',
+        typeAnimated: true,
+        buttons: {
+            cancel: function () {
+            },
+            confirm: {
+                text: 'Ok',
+                btnClass: 'btn-red',
+                action: function () {
+                    var token = $(ele).attr("data-token");
+                    var status = $(ele).attr("status");
+                    $.ajax({
+                        type: "GET",
+                        url: site_url + "customer/customer_status",
+                        data: {id: token, status: status},
+//                      beforeSend: function () {
+//                          $('#loadingmessage').show();
+//                      },
                         success: function (result) {
                             $('#loadingmessage').hide();
                             window.location.reload();
