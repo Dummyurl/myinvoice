@@ -292,4 +292,21 @@ class Invoice extends MX_Controller {
         redirect('invoice');
     }
 
+    public function drop_customer_action() {
+
+        $customer_data['UserID'] = $this->UserID;
+        $customer_data['Firstname'] = $this->input->post('Firstname');
+        $customer_data['Lastname'] = $this->input->post('Lastname');
+        $customer_data['Email'] = $this->input->post('Email');
+        $customer_data['Phone'] = $this->input->post('Phone');
+        $customer_data['Address'] = $this->input->post('Address');
+        $customer_data['GSTno'] = $this->input->post('GSTno');
+        $customer_data['CreatedOn'] = date("Y-m-d H:i:s");
+
+
+        $id = $this->model_invoice->insert('tbl_customer', $customer_data);
+        echo $id;
+        exit(0);
+    }
+
 }

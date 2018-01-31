@@ -28,7 +28,7 @@
                             <div class="form-group">
                                 <select class="form-control" id="Customer" name="Customer">
                                     <option value="">Select Customer</option>
-                                    <option value="" onclick="addCustomer(this);">ADD Customer</option>
+                                    <option value="" onclick="addCustomer(this);"> + ADD Customer  + </option>
                                     <?php foreach ($customer_data as $key => $val) { ?>
                                         <option data-phone="<?php echo $val['Phone']; ?>" data-gstno="<?php echo $val['GSTno']; ?>" data-address="<?php echo $val['Address']; ?>" data-lastname="<?php echo $val['Lastname']; ?>" data-firstname="<?php echo $val['Firstname']; ?>" value="<?php echo $val['ID']; ?>"><?php echo ucfirst($val['Firstname']) . " " . $val['Lastname']; ?></option>
                                     <?php }
@@ -354,7 +354,7 @@
         var AddCustomerForm = $("#AddCustomerForm").valid();
         if (AddCustomerForm) {
             $.ajax({
-                url: site_url + "customer/add_invoice_action",
+                url: site_url + "invoice/drop_customer_action",
                 type: "POST",
                 data: $("#AddCustomerForm").serialize(),
                 beforeSend: function () {
