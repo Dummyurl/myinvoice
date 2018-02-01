@@ -86,6 +86,16 @@ defined('EXIT__AUTO_MIN') OR define('EXIT__AUTO_MIN', 9); // lowest automaticall
 defined('EXIT__AUTO_MAX') OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 
+$site_url = ((isset($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) !== 'off') || (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https')) ? 'https' : 'http';
+$site_url .= '://' . (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '');
+$site = str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+$site_url .= str_replace('admin/', '', $site);
+
+define('ROOT_LOCATION', $site_url);
+define('ADMIN_PATH', $site_url . "admin/");
+
+
+
 define('UPLOAD_PROVIDER_IMAGE_PATH', 'assets/upload/uploads_profile');
 define('NO_IMAGE_FILE', 'assets/upload/no-image.png');
 define('INVOICE_PDF', 'assets/invoice/');

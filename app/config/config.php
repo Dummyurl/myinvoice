@@ -534,9 +534,15 @@ $config['proxy_ips'] = '';
 
 /* Custom URl By Nitin 07-09-2017 */
 
+$config['root_dir'] = ADMIN_PATH;
+
 $config['site_url'] = $config['base_url'];
 $config['assets_folder'] = 'assets';
-$config['assets_url'] = $config['base_url'] . $config['assets_folder'] . '/';
+$new_url = $config['base_url'];
+if ($config['base_url'] == ADMIN_PATH) {
+    $new_url = ROOT_LOCATION;
+}
+$config['assets_url'] = $new_url . $config['assets_folder'] . '/';
 
 $config['images_url'] = $config['assets_url'] . 'images/';
 $config['admin_images_url'] = $config['assets_url'] . 'admin/images/';
@@ -551,4 +557,4 @@ $config['js_url'] = $config['assets_url'] . 'js/';
 $config['admin_js_url'] = $config['assets_url'] . 'admin/js/';
 
 $config['upload_url'] = $config['assets_url'] . 'upload/';
-$config['img_root_dir'] = dirname(dirname(BASEPATH)) . "/themeshub/assets/images/background/";
+$config['upload_root_dir'] = dirname(dirname(BASEPATH)) . "/assets/upload/";
