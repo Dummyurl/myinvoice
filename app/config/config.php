@@ -534,7 +534,7 @@ $config['proxy_ips'] = '';
 
 /* Custom URl By Nitin 07-09-2017 */
 
-$config['root_dir'] = ADMIN_PATH;
+$config['root_dir'] = ROOT_LOCATION;
 
 $config['site_url'] = $config['base_url'];
 $config['assets_folder'] = 'assets';
