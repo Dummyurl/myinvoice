@@ -173,7 +173,12 @@ class Root extends MX_Controller {
             $user_id = $this->session->userdata('ID');
         }
         $deleted = $this->model_support->delete("tbl_login_master", "UserID=" . $user_id);
-        $this->session->sess_destroy();
+        $this->session->unset_userdata("ID");
+        $this->session->unset_userdata("UNAME");
+        $this->session->unset_userdata("FNAME");
+        $this->session->unset_userdata("LNAME");
+        $this->session->unset_userdata("EMAIL");
+        $this->session->unset_userdata("IMAGE");
         $this->session->set_flashdata('success', 'logout successfully');
         redirect($this->config->item('site_url'));
     }

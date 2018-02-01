@@ -56,6 +56,7 @@ class Settings extends MX_Controller {
         $data['City'] = trim($this->input->post('City'));
         $data['PinCode'] = trim($this->input->post('PinCode'));
         $data['GSTPercentage'] = trim($this->input->post('GSTPercentage'));
+        $data['GSTNo'] = trim($this->input->post('GSTNo'));
         $data['State'] = trim($this->input->post('State'));
         $data['CurrencySymbol'] = $this->input->post('CurrencySymbol');
         $this->session->set_userdata("CurrSymbol", $this->input->post('CurrencySymbol'));
